@@ -1,4 +1,4 @@
-﻿namespace ItemGen
+﻿namespace GameStuff.ItemGen
 {
     public class GameItem
 

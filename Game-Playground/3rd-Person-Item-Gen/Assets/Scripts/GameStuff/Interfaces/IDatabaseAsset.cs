@@ -1,15 +1,8 @@
 ﻿namespace GameStuff.Interfaces
 { 
-    public class IDatabaseAsset  {
+    public interface IDatabaseAsset  {
 
-	    // Use this for initialization
-	    void Start () {
-		
-	    }
-	
-	    // Update is called once per frame
-	    void Update () {
-		
-	    }
+        int Id { get; set; }
+        string Name { get; set; }
     }
 }

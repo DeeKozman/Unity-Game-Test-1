@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ItemGen
+namespace GameStuff.ItemGen
 {
     public class NameLibrary
     {
