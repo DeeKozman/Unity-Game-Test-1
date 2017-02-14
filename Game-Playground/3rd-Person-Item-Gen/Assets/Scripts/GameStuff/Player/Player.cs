@@ -1,7 +1,9 @@
 ﻿
-using ItemGen.Interfaces;
+using System;
+using GameStuff.Interfaces;
 
-namespace ItemGen
+namespace GameStuff.Player
+
 {
     public class Player : IPlayer, IBaseStats, IEquipable
     {
@@ -15,7 +17,7 @@ namespace ItemGen
         //Implementation of the IPlayer interface
         public int Experience { get; set; }
         public int Level { get; set; }
-        public int MaxHealth { get; }
+        public int MaxHealth { get; set; }
         public int CurrentHealth { get; set; }
 
 
@@ -23,9 +25,9 @@ namespace ItemGen
         public int Intellect { get; set; }
         public int Strength { get; set; }
         public int Agility { get; set; }
-        public int IntellectBase { get; }
-        public int StrengthBase { get; }
-        public int AgilityBase { get; }
+        public int IntellectBase { get; set; }
+        public int StrengthBase { get; set; }
+        public int AgilityBase { get; set; }
         public int IntellectModAmount { get; set; }
         public int StrengthModAmount { get; set; }
         public int AgilityModAmount { get; set; }
@@ -41,5 +43,7 @@ namespace ItemGen
         public bool ActMeleeWeapon { get; set; }
         public bool ActRangedWeapon { get; set; }
         public bool ActMagicWeapon { get; set; }
+
+        
     }
 }

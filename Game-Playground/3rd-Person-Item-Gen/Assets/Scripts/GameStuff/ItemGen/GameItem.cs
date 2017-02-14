@@ -7,10 +7,10 @@
 /*
             private bool _agilityMod;
     
-            private float _attackSpeed;
-            private float _chanceToHit;
-            private float _damageOnHit;
-            private float _damagePerSecond;
+            private int _attackSpeed;
+            private int _chanceToHit;
+            private int _damageOnHit;
+            private int _damagePerSecond;
     
             private bool _hasModifier;
             private bool _intellectMod;
@@ -37,7 +37,7 @@
     
             public GameItem(string name, string nameMod, int level, ItemTypes type, ItemKind subKind, string slug,
                 int costBuy, int costSell, bool hasMod, int modAmount, bool strengthMod, bool agilityMod, bool intellectMod,
-                float attackSpeed, float damageOnHit, float chanceToHit, float damagePS)
+                int attackSpeed, int damageOnHit, int chanceToHit, int damagePS)
             {
                 ItemName = name;
                 _itemLevel = level;
@@ -134,25 +134,25 @@
                 set { _intellectMod = value; }
             }
     
-            public float AttackSpeed
+            public int AttackSpeed
             {
                 get { return _attackSpeed = 2f; }
                 set { _attackSpeed = value; }
             }
     
-            public float DamageOnHit
+            public int DamageOnHit
             {
                 get { return _damageOnHit = 2f; }
                 set { _damageOnHit = value; }
             }
     
-            public float ChanceToHit
+            public int ChanceToHit
             {
                 get { return _chanceToHit = 2f; }
                 set { _chanceToHit = value; }
             }
     
-            public float DamagePerSecond
+            public int DamagePerSecond
             {
                 get { return _damagePerSecond = 2f; }
                 set { _damagePerSecond = value; }

@@ -1,18 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using GameStuff.Utility.Enums;
 
 namespace GameStuff.ItemGen
 {
     public class NameLibrary
     {
+        
+        // Make the names;
+        public Dictionary<ItemTypes, List<string>> nameDictionary = new Dictionary<ItemTypes, List<string>>();
+        public List<string> WeaponPrefixList;
         public List<string> ArmorPrefixList;
         public List<string> MagicSuffixList;
         public List<string> ModSuffixList;
-        // public Dictionary<ItemTypes, List<string>> itemTypeDictionary = new Dictionary<ItemTypes, List<string>>();
-        public Dictionary<ItemKind, List<string>> nameDictionary = new Dictionary<ItemKind, List<string>>();
-        public Random Rando; //Rhymes with "Lando"
+        public List<string> MeleeeList;
+        public List<string> RangedList;
+        public List<string> MagicList;
+        public List<string> HeadList;
+        public List<string> ChestList;
+        public List<string> FeetList;
 
-        public List<string> WeaponPrefixList;
+        public Random Rando; //Rhymes with "Lando"
 
         public NameLibrary()
         {
@@ -190,7 +198,7 @@ namespace GameStuff.ItemGen
 
         private void fillWeapons()
         {
-            var wepList = new List<string>
+            var MeleeList = new List<string>
             {
                 "Dagger",
                 "Knife",
@@ -226,10 +234,10 @@ namespace GameStuff.ItemGen
                 "Greathammer"
             };
 
-            nameDictionary.Add(ItemKind.Melee, wepList);
-            //itemTypeDictionary.Add(ItemTypes.Weapon, wepList);
+            nameDictionary.Add(ItemTypes.Melee, MeleeList);
+           
 
-            var rangedList = new List<string>
+            var RangedList = new List<string>
             {
                 "Blow Gun",
                 "Throwing Knife",
@@ -240,10 +248,10 @@ namespace GameStuff.ItemGen
                 "Sling"
             };
 
-            nameDictionary.Add(ItemKind.Ranged, rangedList);
-            // itemTypeDictionary.Add(ItemTypes.Weapon, rangedList);
+            nameDictionary.Add(ItemTypes.Ranged, RangedList);
+            
 
-            var magicList = new List<string>
+            var MagicList = new List<string>
             {
                 "Ring",
                 "Wand",
@@ -254,14 +262,14 @@ namespace GameStuff.ItemGen
                 "Dart"
             };
 
-            nameDictionary.Add(ItemKind.Magic, magicList);
-            //itemTypeDictionary.Add(ItemTypes.Weapon, magicList);
+            nameDictionary.Add(ItemTypes.Magic, MagicList);
+            
         }
 
 
         private void fillArmor()
         {
-            var itemList = new List<string>
+            var HeadList = new List<string>
             {
                 "Cap",
                 "Helm",
@@ -270,9 +278,9 @@ namespace GameStuff.ItemGen
                 "Bucket"
             };
 
-            nameDictionary.Add(ItemKind.Head, itemList);
-            // itemTypeDictionary.Add(ItemTypes.Armor, magicList);
-            itemList = new List<string>
+            nameDictionary.Add(ItemTypes.Head, HeadList);
+           
+            ChestList = new List<string>
             {
                 "Studded Leather Armor",
                 "Leather Armor",
@@ -290,9 +298,9 @@ namespace GameStuff.ItemGen
                 "Shell",
                 "Chain Shirt"
             };
-            nameDictionary.Add(ItemKind.Chest, itemList);
+            nameDictionary.Add(ItemTypes.Chest, ChestList);
 
-            itemList = new List<string>
+            FeetList = new List<string>
             {
                 "Gaitors",
                 "Greives",
@@ -301,7 +309,7 @@ namespace GameStuff.ItemGen
                 "Sandals",
                 "Stompers"
             };
-            nameDictionary.Add(ItemKind.Feet, itemList);
+            nameDictionary.Add(ItemTypes.Feet, FeetList);
         }
 
 
@@ -311,23 +319,22 @@ namespace GameStuff.ItemGen
             return (T) v.GetValue(Rando.Next(v.Length));
         }
 
-
         public ItemTypes GetItemType()
         {
             return RandomEnumValue<ItemTypes>();
         }
 
-        public ItemKind GetItemKind()
+        public WeaponQualityTypes GetWeaponQuality()
         {
-            return RandomEnumValue<ItemKind>();
+            return RandomEnumValue<WeaponQualityTypes>();
         }
 
-        public QualityType GetQuality()
+        public ArmorQualityTypes GetArmorQuality()
         {
-            return RandomEnumValue<QualityType>();
+            return RandomEnumValue<ArmorQualityTypes>();
         }
 
-        public string GetBaseNameForItemKind(ItemKind kindOf)
+        public string GetBaseNameForItemTypes(ItemTypes kindOf)
         {
             var itemList = nameDictionary[kindOf];
             return itemList[Rando.Next(itemList.Count)];

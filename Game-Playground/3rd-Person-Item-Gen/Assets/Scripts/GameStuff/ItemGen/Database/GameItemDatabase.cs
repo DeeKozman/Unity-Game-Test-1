@@ -5,31 +5,31 @@ using GameStuff.Utility.Databases.BaseDatabase;
 
 namespace GameStuff.ItemGen.Database
 {
-    public class GameItemTypeDatabase : BaseDatabase<GameItemTypeAsset>
+    public class GameItemDatabase : BaseDatabase<GameItemAsset>
     {
         private const string DatabasePath = @"Resources/GameItemGen/Databases/";
-        private const string DatabaseName = @"GameItemDatabase.asset";
+        private const string DatabaseName = @"GameItemsDatabase.asset";
 
-        static private GameItemTypeDatabase _instance = null;
+        static private GameItemDatabase _instance = null;
 
-        static public GameItemTypeDatabase Instance
+        static public GameItemDatabase Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = GetDatabase<GameItemTypeDatabase>(DatabasePath, DatabaseName);
+                    _instance = GetDatabase<GameItemDatabase>(DatabasePath, DatabaseName);
                 }
                 return _instance;
             }
         }
 
-        static public GameItemTypeAsset GetAt(int index)
+        static public GameItemAsset GetAt(int index)
         {
             return Instance.GetAtIndex(index);
         }
 
-        static public GameItemTypeAsset GetAsset(int id)
+        static public GameItemAsset GetAsset(int id)
         {
             return Instance.GetById(id);
         }

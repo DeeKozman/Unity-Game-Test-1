@@ -10,8 +10,12 @@ namespace GameStuff.Utility.Enums
 {
     public enum ItemTypes
     {
-        Weapon = 1,
-        Armor
+        Melee = 1,
+        Ranged,
+        Magic,
+        Head,
+        Chest,
+        Feet
     }
 
     public enum WeaponGroups

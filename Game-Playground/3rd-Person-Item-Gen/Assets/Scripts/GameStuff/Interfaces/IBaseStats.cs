@@ -1,18 +1,18 @@
-﻿namespace ItemGen.floaterfaces
+﻿namespace GameStuff.Interfaces
 {
     // Player Stats floaterface
 
     public interface IBaseStats
     {
-        float IntellectBase { get;}
-        float StrengthBase { get;  }
-        float AgilityBase { get;}
-        float Intellect { get; set; }
-        float Strength { get; set; }
-        float Agility { get; set; }
-        float IntellectModAmount { get; set; }
-        float StrengthModAmount { get; set; }
-        float AgilityModAmount { get; set; }
+        int IntellectBase { get; set; }
+        int StrengthBase { get;  }
+        int AgilityBase { get; set; }
+        int Intellect { get; set; }
+        int Strength { get; set; }
+        int Agility { get; set; }
+        int IntellectModAmount { get; set; }
+        int StrengthModAmount { get; set; }
+        int AgilityModAmount { get; set; }
 
     }
 }
