@@ -2,14 +2,21 @@
 
 namespace GameStuff.Interfaces
 {
-    public interface IWeapon : IGameItem
+    public interface IWeapon
     {
-        WeaponGroups WeaponGroup();
-        WeaponQualityTypes WeaponQualityType();
-        int AttackSpeed();
-        int ChanceToHit();
-        int DamageOnHit();
-        int DamagePerSecond();
-       
+        WeaponGroups WeaponGroup { get; set; }
+        WeaponQualityTypes WeaponQualityType { get; set; }
+        float AttackSpeed { get; set; }
+        float ChanceToHit { get; set; }
+        float DamageOnHit { get; set; }
+        float DamagePerSecond { get; set; }
+        
+        void CalcAttackSpeed();
+
+        void CalcChanceToHit();
+
+        void CalcDamageOnHit();
+
+        void CalcDmagePerSecond();
     }
 }

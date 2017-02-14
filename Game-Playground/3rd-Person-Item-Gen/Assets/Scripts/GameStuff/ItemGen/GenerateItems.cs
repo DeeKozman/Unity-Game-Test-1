@@ -10,7 +10,7 @@ namespace GameStuff.ItemGen
     {
 
         // Create Database
-        public void OnEnable()
+        public void OnAwake()
         {
             Console.WriteLine("OnEnable is happening.");
             NameLibrary lib = new NameLibrary();
@@ -24,7 +24,9 @@ namespace GameStuff.ItemGen
                 }
                 else
                 {
-
+                    Console.Write("Database is empty!");
+                    //var newAsset = new GameItemAsset(GameItemDatabase.Instance.GetNextId());
+                    //GameItemDatabase.Instance.Add(newAsset);
                 }
             }
         }

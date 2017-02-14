@@ -2,7 +2,7 @@
 {
     //Tracking what Items the Player is using
 
-    public interface IEquipable
+    public interface IPlayerEquipable
     {
         bool ActHeadArmor { get; set; }
         bool ActChestArmor { get; set; }
