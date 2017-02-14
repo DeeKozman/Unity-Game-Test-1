@@ -1,34 +1,42 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using GameStuff.ItemGen.Database;
 
-namespace GameStuff.ItemGen
+
+namespace GameStuff.ItemGen.Database
 {
-    public class GenerateItems
+    public class GenerateItemDatabase : MonoBehaviour
     {
-
+        
+        private const int N = 10;
+        //private string[] _modAppendNames = new string[3] { "of Strength", "of Agility", "of Intellect" };
         // Create Database
         public void OnAwake()
         {
             Console.WriteLine("OnEnable is happening.");
-            NameLibrary lib = new NameLibrary();
-            Console.Write("lib length=" + lib.nameDictionary.Count);
+           
             for (int i = 0; i < GameItemDatabase.GetAssetCount(); i++)
             {
                 var asset = GameItemDatabase.GetAt(i);
                 if (asset != null)
                 {
-                    Console.Write("Database is not empty!");
+                    Debug.Log("Database is not empty!");
                 }
                 else
                 {
-                    Console.Write("Database is empty!");
+                    Debug.Log("Database is empty!");
+                    ConstructItemDatabase();
                     //var newAsset = new GameItemAsset(GameItemDatabase.Instance.GetNextId());
                     //GameItemDatabase.Instance.Add(newAsset);
                 }
             }
+        }
+
+        private void ConstructItemDatabase()
+        {
+            Debug.Log("Database is being Made!");
         }
     }
 }

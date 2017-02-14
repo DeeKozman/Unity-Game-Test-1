@@ -31,8 +31,8 @@ namespace GameStuff.ItemGen
             fillArmorPrefix();
             fillMagicSuffix();
             fillModSuffix();
-            Console.Write("NameDictKeys: " + nameDictionary.Keys);
-            Console.Write("COUNT: " + nameDictionary.Count);
+           // Debug.Log("NameDictKeys: " + nameDictionary.Keys);
+           // Debug.Log("COUNT: " + nameDictionary.Count);
         }
 
         private void fillWeaponPrefix()

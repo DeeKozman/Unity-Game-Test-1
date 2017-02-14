@@ -5,7 +5,7 @@ using GameStuff.Interfaces;
 namespace GameStuff.Player
 
 {
-    public class Player : IPlayer, IBaseStats, IEquipable
+    public class Player : IPlayer, IPlayerStats, IPlayerEquipable
     {
         private bool _actHeadArmor;
         private bool _actChestArmor;
@@ -19,22 +19,28 @@ namespace GameStuff.Player
         public int Level { get; set; }
         public int MaxHealth { get; set; }
         public int CurrentHealth { get; set; }
+        public void GenerateStats()
+        {
+            throw new NotImplementedException();
+        }
 
-
-        //Implementation of the IBaseStats interface
-        public int Intellect { get; set; }
-        public int Strength { get; set; }
-        public int Agility { get; set; }
         public int IntellectBase { get; set; }
         public int StrengthBase { get; set; }
         public int AgilityBase { get; set; }
+        public int Intellect { get; set; }
+        public int Strength { get; set; }
+        public int Agility { get; set; }
         public int IntellectModAmount { get; set; }
         public int StrengthModAmount { get; set; }
         public int AgilityModAmount { get; set; }
-
-        public void GenerateStats()
+        public void AddMods()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
+        }
+
+        public void RemoveMods()
+        {
+            throw new NotImplementedException();
         }
 
         public bool ActHeadArmor { get; set; }
@@ -43,6 +49,10 @@ namespace GameStuff.Player
         public bool ActMeleeWeapon { get; set; }
         public bool ActRangedWeapon { get; set; }
         public bool ActMagicWeapon { get; set; }
+
+
+        //Implementation of the IBaseStats interface
+        
 
         
     }

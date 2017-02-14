@@ -6,12 +6,12 @@ namespace GameStuff.ItemGen.Weapons
 {
     public class Weapon : IWeapon, IBaseItem
     {
-        
-        
 
-        
-        
-        
+
+
+
+
+        private IEnumerable<int> _itemLevels = Enumerable.Range(1, 10);
         private int _itemLevel;
         private string _itemName;
         private string _baseName;
