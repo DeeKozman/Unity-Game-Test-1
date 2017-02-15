@@ -1,6 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using GameStuff.Utility.Enums;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using Random = System.Random;
 
 namespace GameStuff.ItemGen
 {
@@ -9,18 +14,23 @@ namespace GameStuff.ItemGen
         
         // Make the names;
         public Dictionary<ItemTypes, List<string>> nameDictionary = new Dictionary<ItemTypes, List<string>>();
+       
+       
         public List<string> WeaponPrefixList;
         public List<string> ArmorPrefixList;
         public List<string> MagicSuffixList;
         public List<string> ModSuffixList;
-        public List<string> MeleeeList;
+
+        public List<string> MeleeList;
         public List<string> RangedList;
         public List<string> MagicList;
         public List<string> HeadList;
         public List<string> ChestList;
         public List<string> FeetList;
+        private int counter;
 
         public Random Rando; //Rhymes with "Lando"
+        private int rando;
 
         public NameLibrary()
         {
@@ -31,10 +41,41 @@ namespace GameStuff.ItemGen
             fillArmorPrefix();
             fillMagicSuffix();
             fillModSuffix();
-           // Debug.Log("NameDictKeys: " + nameDictionary.Keys);
-           // Debug.Log("COUNT: " + nameDictionary.Count);
+           //Debug.Log("MeleeList: " + MeleeList.Count);
+            //Debug.Log("WeaponPrefixList: " + WeaponPrefixList.Count);
+            foreach (var _item in nameDictionary[ItemTypes.Melee])
+            {
+                var baseName = _item;
+                var pre = WeaponPrefixList[rando];
+                Debug.Log("Name="+ pre + _item);
+            }
         }
 
+        private void SeeLists()
+        {
+            
+            for (int index = 0; index < nameDictionary.Count; index++)
+            {
+                var item = nameDictionary.ElementAt(index);
+                var itemKey = item.Key;
+                var itemValue = item.Value;
+                var s = item.Value.Count;
+                foreach (var d in itemValue)
+                {
+                    
+                    counter++;
+                }
+               var itemValuex = Rando.Next(1,11);
+                
+                Debug.Log("Key:" + itemKey +"/ Count:"+s);
+               
+            }
+            Debug.Log("Counter Says:" + counter);
+            
+
+        }
+
+       
         private void fillWeaponPrefix()
         {
             WeaponPrefixList = new List<string>
@@ -189,16 +230,16 @@ namespace GameStuff.ItemGen
         {
             ModSuffixList = new List<string>
             {
-                "Agility",
-                "Intellect",
-                "Strength",
+                "of Agility",
+                "of Intellect",
+                "of Strength",
                 ""
             };
         }
 
         private void fillWeapons()
         {
-            var MeleeList = new List<string>
+            MeleeList = new List<string>
             {
                 "Dagger",
                 "Knife",
@@ -235,9 +276,9 @@ namespace GameStuff.ItemGen
             };
 
             nameDictionary.Add(ItemTypes.Melee, MeleeList);
-           
-
-            var RangedList = new List<string>
+           Debug.Log("MeleeList:" + MeleeList.Count);
+            //Debug.Log("namedic:" + nameDictionary.ElementAt(6).Value);
+            RangedList = new List<string>
             {
                 "Blow Gun",
                 "Throwing Knife",
@@ -251,7 +292,7 @@ namespace GameStuff.ItemGen
             nameDictionary.Add(ItemTypes.Ranged, RangedList);
             
 
-            var MagicList = new List<string>
+            MagicList = new List<string>
             {
                 "Ring",
                 "Wand",
@@ -263,13 +304,14 @@ namespace GameStuff.ItemGen
             };
 
             nameDictionary.Add(ItemTypes.Magic, MagicList);
+            Debug.Log("MagicList:"+MagicList.Count);
             
         }
 
 
         private void fillArmor()
         {
-            var HeadList = new List<string>
+            HeadList = new List<string>
             {
                 "Cap",
                 "Helm",
@@ -310,8 +352,10 @@ namespace GameStuff.ItemGen
                 "Stompers"
             };
             nameDictionary.Add(ItemTypes.Feet, FeetList);
+            SeeLists();
         }
 
+        
 
         public T RandomEnumValue<T>()
         {

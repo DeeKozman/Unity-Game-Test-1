@@ -8,6 +8,8 @@
 
 namespace GameStuff.Utility.Enums
 {
+    
+
     public enum ItemTypes
     {
         Melee = 1,

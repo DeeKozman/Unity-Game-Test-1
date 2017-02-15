@@ -5,7 +5,7 @@ using System;
 
 namespace ItemGen
 {
-    public class MeleeWeapon : IWeapon, IBaseItem// Implementation of the IWeapon & IBaseItem Interfaces
+    public class MeleeWeapon //: IWeapon, IBaseItem// Implementation of the IWeapon & IBaseItem Interfaces
     {
 
         public Random Rando; //Rhymes with "Lando"
@@ -60,7 +60,7 @@ namespace ItemGen
 
         public void GetLevel()
         {
-           _level = Rando.Next(1, 11);
+           _itemLevel = Rando.Next(1, 11);
         }
 
         public void GetItemName()

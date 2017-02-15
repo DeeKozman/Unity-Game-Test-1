@@ -8,8 +8,8 @@ namespace GameStuff.Interfaces
 {
     public interface IBaseItem
     {
-        string ItemName { get; set; }
-        string BaseName { get; set; }
+        string Name { get; set; }
+        
         string PrefixName { get; set; }
         string SuffixName { get; set; }
         int Level { get; set; }
@@ -17,7 +17,9 @@ namespace GameStuff.Interfaces
         int StatsModAmount { get; set; }
         int PriceBuy { get; set; }
         int PriceSell { get; set; }
+        string getPrefix();
 
+        string getSuffix();
         
         void CalcItemQuality();
 

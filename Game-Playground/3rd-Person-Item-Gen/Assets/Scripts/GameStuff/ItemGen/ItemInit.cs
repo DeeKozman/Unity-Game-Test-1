@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GameStuff.ItemGen.Database;
+using GameStuff.Utility.Enums;
 
 namespace GameStuff.ItemGen
 {
     public class ItemInit : MonoBehaviour
     {
 
-        void OnAwake()
+        private void Start()
         {
             Main();
         }
@@ -16,7 +18,8 @@ namespace GameStuff.ItemGen
         {
             NameLibrary Lib = new NameLibrary();
             Debug.Log("NameDictKeys: " + Lib.nameDictionary.Keys);
-            Debug.Log("COUNT: " + Lib.nameDictionary.Count);
+            //Debug.Log("COUNT: " + Lib.nameDictionary.Count);
+            Debug.Log("Count" + Lib.nameDictionary.Keys.ToString());
         }
     }
 }
