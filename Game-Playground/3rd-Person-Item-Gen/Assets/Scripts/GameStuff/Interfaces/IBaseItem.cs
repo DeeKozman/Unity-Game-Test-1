@@ -10,16 +10,13 @@ namespace GameStuff.Interfaces
     {
         string Name { get; set; }
         
-        string PrefixName { get; set; }
-        string SuffixName { get; set; }
+       
         int Level { get; set; }
         StatsModifierTypes StatsModType { get; set; }
         int StatsModAmount { get; set; }
         int PriceBuy { get; set; }
         int PriceSell { get; set; }
-        string getPrefix();
-
-        string getSuffix();
+        
         
         void CalcItemQuality();
 

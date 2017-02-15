@@ -8,7 +8,11 @@
 
 namespace GameStuff.Utility.Enums
 {
-    
+    public enum Items
+    {
+        Weapon = 1,
+        Armor
+    }
 
     public enum ItemTypes
     {
@@ -66,7 +70,6 @@ namespace GameStuff.Utility.Enums
 
     public enum StatsModifierTypes
     {
-        None,
         Strength,
         Agility,
         Intellect
