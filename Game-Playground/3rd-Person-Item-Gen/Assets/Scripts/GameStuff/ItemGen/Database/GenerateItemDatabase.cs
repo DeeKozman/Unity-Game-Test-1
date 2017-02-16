@@ -10,8 +10,6 @@ namespace GameStuff.ItemGen.Database
     public class GenerateItemDatabase : MonoBehaviour
     {
         
-        private const int N = 10;
-        //private string[] _modAppendNames = new string[3] { "of Strength", "of Agility", "of Intellect" };
         // Create Database
         public void OnAwake()
         {

@@ -1,54 +1,23 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.Remoting.Activation;
-using GameStuff.Interfaces;
+using UnityEngine;
 using GameStuff.Utility.Enums;
 
-namespace GameStuff.ItemGen.WeaponItems
+namespace GameStuff.ItemGen
 {
-    public class Weapon : GameItem, IWeapon
+    public class Weapon : GameItem
     {
-
-
-
-        //private IEnumerable<int> _itemLevels = Enumerable.Range(1, 10);
-        private int _itemLevel;
-        private static string _itemName;
-        private string _baseName;
-        private string _prefixName;
-        private string _suffixName;
-        private string _itemSlug;
-        private string _weaponQuality;
-
-
-        private float _attackSpeed;
-        private float _chanceToHit;
-        private float _damageOnHit;
-        private float _damagePerSecond;
-
-        private int _statsModAmount;
-        
-        private int _priceToBuy;
-        private int _priceToSell;
-        // Implementation of the IBaseItem Interface
-        public string Name;
-
-        public static int Level;
-        //public static StatsModifierTypes StatsModType;
-
-        public int PriceBuy { get; set; }
-        public int PriceSell { get; set; }
-
-        // Implementation of the IWeapon Interface
+        private static int Level;
         private static WeaponGroups _weaponGroup = GetWeaponType();
         private static WeaponQualityTypes _weaponQualityType = GetWeaponQuality();
         private static string _statsModType = getStatsModifierTypes();
-        public float AttackSpeed { get; set; }
-        public float ChanceToHit { get; set; }
-        public float DamageOnHit { get; set; }
-        public float DamagePerSecond { get; set; }
-        protected static Random random = new Random();
+        private static int _statsModAmount = StatsModAmount;
+        // Specific weapon stats.
+        public float AttackSpeed;
+        public float ChanceToHit;
+        public int DamageOnHit;
+        public int DamagePerSecond { get; set; }
 
         public Weapon()
         {
@@ -56,8 +25,14 @@ namespace GameStuff.ItemGen.WeaponItems
             Level = ItemLevel;
             ItemQuality = _weaponQualityType.ToString();
             ItemName = GetItemName(ItemName, ItemQuality, HasMods, _statsModType);
-            PriceBuy = 1;
-            PriceSell = 1;
+            AttackSpeed = (float)random.Next(5, 26) / 10;
+            ChanceToHit = (0.9f + (float)Level) * .05f;
+            DamageOnHit = random.Next(5, 11)*Level;
+            // DPS = Math.Ceiling((((minDamageOnHit+MaxDamageOnHit)/2)*(AttackSpeed + ChanceToHit)));
+            DamagePerSecond = (int)Math.Ceiling((((1 + DamageOnHit) / 2) * (AttackSpeed + ChanceToHit)));
+            PriceBuy = ((Level * DamagePerSecond) + (Level * _statsModAmount)) * 100;
+            PriceSell = (PriceBuy * random.Next(2, 6)) / 10;
+            Debug.Log("Weapon!" + " / PriceBuy: " + PriceBuy + " / PriceSell: " + PriceSell);
         }
 
 
@@ -96,16 +71,9 @@ namespace GameStuff.ItemGen.WeaponItems
                     break;
             }
 
-
             return name;
         }
 
-
-        private static T RandomEnumValue<T>()
-        {
-            var v = Enum.GetValues(typeof(T));
-            return (T)v.GetValue(random.Next(v.Length));
-        }
 
         private static WeaponGroups GetWeaponType()
         {
@@ -124,24 +92,18 @@ namespace GameStuff.ItemGen.WeaponItems
             return _statsModType;
         } 
 
-        public void CalcAttackSpeed()
+        public bool CalcChanceToHit()
         {
-            throw new System.NotImplementedException();
-        }
-
-        public void CalcChanceToHit()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void CalcDamageOnHit()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void CalcDmagePerSecond()
-        {
-            throw new System.NotImplementedException();
+            var hit =(0.9f + (float)Level) * .05f;
+            var noHit = (float)random.Next(9, 15) / 10;
+            if (noHit < hit)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         private static List<string> weaponPrefixes = new List<string>

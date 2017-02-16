@@ -1,27 +1,21 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using GameStuff.Interfaces;
+using UnityEngine;
 using GameStuff.Utility.Enums;
 
-namespace GameStuff.ItemGen.ArmorItems
+namespace GameStuff.ItemGen
 {
-    public class Armor : GameItem, IArmor
+    public class Armor : GameItem
     {
-        
 
+        private static int Level;
         private static ArmorGroups _armorGroup = GetArmorType();
         private static ArmorQualityTypes _armorQualityType = GetArmorQuality();
         private static string _statsModType = getStatsModifierTypes();
+        private static int _statsModAmount = StatsModAmount;
+        public static int DamageReductionAmount;
 
-        public int DamageReductionAmount { get; set; }
-        private static string _ItemName;
-
-        private static int Level;
-        public int StatsModAmount { get; set; }
-        
-
-        protected static Random random = new Random();
 
         public Armor()
         {
@@ -30,8 +24,12 @@ namespace GameStuff.ItemGen.ArmorItems
             Level = ItemLevel;
             ItemQuality = _armorQualityType.ToString();
             ItemName = GetItemName(ItemName, ItemQuality, HasMods, _statsModType);
-            PriceBuy = 1;
-            PriceSell = 1;
+            DamageReductionAmount = random.Next(1, 3) * Level;
+            PriceBuy = ((Level * DamageReductionAmount)+(Level * _statsModAmount))*100;
+            PriceSell = (PriceBuy * random.Next(2, 6))/10;
+            Debug.Log("Armor!" + " / PriceBuy: " + PriceBuy + " / PriceSell: " + PriceSell);
+
+
         }
 
         private static string GetItemName(string name, string quality, bool stats, string statType)
@@ -69,12 +67,6 @@ namespace GameStuff.ItemGen.ArmorItems
             return name;
             
         }
-        
-        private static T RandomEnumValue<T>()
-        {
-            var v = Enum.GetValues(typeof(T));
-            return (T)v.GetValue(random.Next(v.Length));
-        }
 
         private static ArmorGroups GetArmorType()
         {
@@ -92,25 +84,6 @@ namespace GameStuff.ItemGen.ArmorItems
             return _statsModType;
         }
 
-        public void CalcLevel()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void CalcItemName()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void CalcStatModifications()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void CalcPrices()
-        {
-            throw new System.NotImplementedException();
-        }
 
         private static List<string> armorPrefixes = new List<string>
             {
