@@ -22,6 +22,14 @@ namespace GameStuff.ItemGen
 
         protected static Random random = new Random();
 
+        
+        protected virtual void GenerateQuality() { }
+
+        protected virtual void GenerateItemName() { }
+
+        protected virtual void GenerateTheDetails() { }
+
+
         ///TODO: Would Love to use my Enums for Items to populate this list, but need figure out a simple way to do it.
         private static List<Type> itemType = new List<Type> {
             typeof(Weapon),
@@ -31,29 +39,35 @@ namespace GameStuff.ItemGen
         public static GameItem Generate()
         {
             GameItem newItem = (GameItem)CreateInstance(itemType[random.Next(0, itemType.Count)]);
+            newItem.ItemLevel = random.Next(1, 11);
+            newItem.CalcStatModifications(newItem.ItemLevel);
+            newItem.GenerateQuality();
+            newItem.GenerateItemName();
+            newItem.GenerateTheDetails();
+           
             return newItem;
         }
 
         public static GameItem Generate(Type itemType)
         {
             GameItem newItem = (GameItem)CreateInstance(itemType);
+            newItem.CalcStatModifications(newItem.ItemLevel);
+            newItem.ItemLevel = random.Next(1, 11);
+            newItem.GenerateQuality();
+            newItem.GenerateItemName();
+            newItem.GenerateTheDetails();
             return newItem;
         }
 
         public static GameItem Generate(int itemLevel)
         {
             GameItem newItem = (GameItem)CreateInstance(itemType[random.Next(0, itemType.Count)]);
+            newItem.ItemLevel = itemLevel;
+            newItem.CalcStatModifications(newItem.ItemLevel);
+            newItem.GenerateQuality();
+            newItem.GenerateItemName();
+            newItem.GenerateTheDetails();
             return newItem;
-        }
-
-        private void GenerateName(GameItem item)
-        {
-            /*if (item is Weapon)
-                item.Name = "weapon";
-
-            if (item is Armor)
-                item.Name = "armor";
-                */
         }
 
         public void CalcStatModifications(int level)

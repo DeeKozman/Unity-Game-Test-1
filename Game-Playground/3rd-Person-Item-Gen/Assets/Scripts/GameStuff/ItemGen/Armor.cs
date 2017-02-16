@@ -17,21 +17,33 @@ namespace GameStuff.ItemGen
 
         public Armor()
         {
-            ItemLevel = random.Next(1, 11);
-            CalcStatModifications(ItemLevel);
             _armorGroup = GetArmorType();
-            _armorQualityType = GetArmorQuality();
+            
             _statsModType = getStatsModifierTypes();
             ItemGroup = _armorGroup.ToString();
-            ItemLevel = ItemLevel;
+         
+        }
+
+        protected override void GenerateQuality()
+        {
+            _armorQualityType = GetArmorQuality();
             ItemQuality = _armorQualityType.ToString();
+
+            
+        }
+
+        protected override void GenerateItemName()
+        {
             Name = GetItemName(Name, ItemQuality, HasMods, _statsModType);
+        }
+
+        protected override void GenerateTheDetails()
+        {
+            
             DamageReductionAmount = random.Next(1, 3) * ItemLevel;
-            PriceBuy = ((ItemLevel * DamageReductionAmount)+(ItemLevel * StatsModAmount))*100;
-            PriceSell = (PriceBuy * random.Next(2, 6))/10;
-            Debug.Log("Armor! Name: " +Name+ " / PriceBuy: " + PriceBuy + " / PriceSell: " + PriceSell);
-
-
+            PriceBuy = ((ItemLevel * DamageReductionAmount) + (ItemLevel * StatsModAmount)) * 100;
+            PriceSell = (PriceBuy * random.Next(2, 6)) / 10;
+            Debug.Log("Armor! Name:"+Name+" / Level:"+ItemLevel+" / ItemGroup: "+ItemGroup+" / ItemQuality:"+ItemQuality+" / PriceBuy:"+PriceBuy+" / PriceSell:"+PriceSell+" / Damage Reduction: "+ DamageReductionAmount+" / StatsModAmount: "+ StatsModAmount);
         }
 
         private string GetItemName(string name, string quality, bool stats, string statType)
@@ -80,6 +92,7 @@ namespace GameStuff.ItemGen
            
             return (ArmorQualityTypes)ItemLevel;
         }
+
         private string getStatsModifierTypes()
         {
            

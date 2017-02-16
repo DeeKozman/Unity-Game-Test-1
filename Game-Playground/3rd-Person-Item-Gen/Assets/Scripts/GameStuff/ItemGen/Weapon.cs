@@ -21,22 +21,35 @@ namespace GameStuff.ItemGen
         //protected static Random random = new Random();
         public Weapon()
         {
-            ItemLevel = random.Next(1, 11);
-            CalcStatModifications(ItemLevel);
             _weaponGroup = GetWeaponType();
-            _weaponQualityType = GetWeaponQuality();
             _statsModType = getStatsModifierTypes();
             ItemGroup = _weaponGroup.ToString();
+           
+        }
+
+        protected override void GenerateQuality()
+        {
+            _weaponQualityType = GetWeaponQuality();
             ItemQuality = _weaponQualityType.ToString();
+            
+        }
+
+        protected override void GenerateItemName()
+        {
             Name = GetItemName(Name, ItemQuality, HasMods, _statsModType);
+        }
+
+        protected override void GenerateTheDetails()
+        {
+            
             AttackSpeed = (float)random.Next(5, 26) / 10;
             ChanceToHit = (0.9f + (float)ItemLevel) * .05f;
-            DamageOnHit = random.Next(5, 11)*ItemLevel;
+            DamageOnHit = random.Next(5, 11) * ItemLevel;
             // DPS = Math.Ceiling((((minDamageOnHit+MaxDamageOnHit)/2)*(AttackSpeed + ChanceToHit)));
             DamagePerSecond = (int)Math.Ceiling((((1 + DamageOnHit) / 2) * (AttackSpeed + ChanceToHit)));
-            PriceBuy = ((ItemLevel * DamagePerSecond) + (ItemLevel *StatsModAmount)) * 100;
+            PriceBuy = ((ItemLevel * DamagePerSecond) + (ItemLevel * StatsModAmount)) * 100;
             PriceSell = (PriceBuy * random.Next(2, 6)) / 10;
-            Debug.Log("Weapon! Name: " + Name+ " / PriceBuy: " + PriceBuy + " / PriceSell: " + PriceSell + " / Damage: " + DamageOnHit);
+            Debug.Log("Weapon! Name:" + Name + " / Level:" + ItemLevel + " / ItemGroup: " + ItemGroup + " / ItemQuality:" + ItemQuality + " / PriceBuy:" + PriceBuy + " / PriceSell:" + PriceSell+" / DamageOnHit: " + DamageOnHit +" / AttackSpeed: "+AttackSpeed+" / ChanceToHit: "+ChanceToHit+" / DPS: "+DamagePerSecond+" / StatsModAmount: "+ StatsModAmount);
         }
 
 
