@@ -26,7 +26,7 @@ namespace GameStuff.ItemGen
             Debug.Log("There Are "+items.Count+" Items.");
             foreach (var item in items)
             {
-                Debug.Log(item.Name+" / "+item.ItemGroup+" / "+item.ItemQuality);
+                //Debug.Log("name: "+GameItem.Name+" / Group: "+ GameItem.ItemGroup + " /  Quality:"+ GameItem.ItemQuality+" / price:"+ GameItem.PriceBuy + " / sell:" +GameItem.PriceSell);
             }
         }
     }

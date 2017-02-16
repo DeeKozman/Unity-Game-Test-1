@@ -9,22 +9,29 @@ namespace GameStuff.ItemGen.Database
     [System.Serializable]
     public class GameItemAsset : BaseDatabaseAsset
     {
-        [SerializeField] private string _nameShort;
+        [SerializeField] private string _itemName;
 
-        [SerializeField] private string _description;
+        [SerializeField] private string _itemGroup;
+
+        [SerializeField] private string _itemQuality;
 
         [SerializeField] private Sprite _icon;
 
-        public String NameShort
+        public String ItemName
         {
-            get { return _nameShort; }
-            set { _nameShort = value; }
+            get { return _itemName; }
+            set { _itemName = value; }
         }
 
-        public String Description
+        public String ItemGroup
         {
-            get { return _description; }
-            set { _description = value; }
+            get { return _itemGroup; }
+            set { _itemGroup = value; }
+        }
+        public String ItemQuality
+        {
+            get { return _itemQuality; }
+            set { _itemQuality = value; }
         }
 
         public Sprite Icon
@@ -35,29 +42,33 @@ namespace GameStuff.ItemGen.Database
 
         public GameItemAsset() : base()
         {
-            this.NameShort = String.Empty;
-            this.Description = String.Empty;
+            this.ItemName = String.Empty;
+            this.ItemGroup = String.Empty;
+            this.ItemQuality = String.Empty;
             this.Icon = null;
         }
 
         public GameItemAsset(int id) : base(id)
         {
-            this.NameShort = String.Empty;
-            this.Description = String.Empty;
+            this.ItemName = String.Empty;
+            this.ItemGroup = String.Empty;
+            this.ItemQuality = String.Empty;
             this.Icon = null;
         }
 
         public GameItemAsset(int id, string name) : base(id, name)
         {
-            this.NameShort = String.Empty;
-            this.Description = String.Empty;
+            this.ItemName = String.Empty;
+            this.ItemGroup = String.Empty;
+            this.ItemQuality = String.Empty;
             this.Icon = null;
         }
 
-        public GameItemAsset(int id, string name, string nameShort, string description, Sprite icon) : base(id, name)
+        public GameItemAsset(int id, string name, string itemName, string itemGroup, string itemQuality, Sprite icon) : base(id, name)
         {
-            this.NameShort = nameShort;
-            this.Description = description;
+            this.ItemName = itemName;
+            this.ItemGroup = itemGroup;
+            this.ItemQuality = itemQuality;
             this.Icon = icon;
         }
     }

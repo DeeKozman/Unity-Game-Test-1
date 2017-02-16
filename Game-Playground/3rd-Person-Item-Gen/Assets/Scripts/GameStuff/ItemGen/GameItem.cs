@@ -10,10 +10,10 @@ namespace GameStuff.ItemGen
     public class GameItem : ScriptableObject
     {
 
-        public string Name;
-        public int ItemLevel;
-        public string ItemGroup;
-        public string ItemQuality;
+        public static string Name;
+        public static int ItemLevel;
+        public static string ItemGroup;
+        public static string ItemQuality;
         public static StatsModifierTypes StatsModType;
         public static bool HasMods;
         public static int StatsModAmount;
@@ -30,42 +30,42 @@ namespace GameStuff.ItemGen
 
         public static GameItem Generate()
         {
-            GameItem newItem = CreateInstance(itemType[random.Next(0, itemType.Count)]) as GameItem;
+            GameItem newItem = (GameItem)CreateInstance(itemType[random.Next(0, itemType.Count)]);
             GenerateName(newItem);
-            newItem.ItemLevel = random.Next(1, 11);
-            CalcStatModifications(newItem.ItemLevel);
+           ItemLevel = random.Next(1, 11);
+            CalcStatModifications(ItemLevel);
             //Debug.Log("Name: " + newItem.Name+" / Level: " + newItem.ItemLevel + " / StatsModType: " + StatsModType+ " / StatsModAmount: "+StatsModAmount);
             return newItem;
         }
 
         public static GameItem Generate(Type itemType)
         {
-            GameItem newItem = Activator.CreateInstance(itemType) as GameItem;
+            GameItem newItem = (GameItem)CreateInstance(itemType);
             GenerateName(newItem);
-            newItem.ItemLevel = random.Next(1, 11);
-            CalcStatModifications(newItem.ItemLevel);
-            Debug.Log("Level: " + newItem.ItemLevel + "/ Name: " + newItem.Name);
+            ItemLevel = random.Next(1, 11);
+            CalcStatModifications(ItemLevel);
+            Debug.Log("Level: " + ItemLevel + "/ Name: " + Name);
             return newItem;
         }
 
         public static GameItem Generate(int itemLevel)
         {
-            GameItem newItem = Activator.CreateInstance(itemType[random.Next(0, itemType.Count)]) as GameItem;
+            GameItem newItem = (GameItem)CreateInstance(itemType[random.Next(0, itemType.Count)]);
             GenerateName(newItem);
-            newItem.ItemLevel = itemLevel;
-            CalcStatModifications(newItem.ItemLevel);
-            Debug.Log("Level: " + newItem.ItemLevel + "/ Name: " + newItem.Name);
+            ItemLevel = itemLevel;
+            CalcStatModifications(ItemLevel);
+            Debug.Log("Level: " + ItemLevel + "/ Name: " + Name);
             return newItem;
         }
 
         private static void GenerateName(GameItem item)
         {
-            if (item is Weapon)
+            /*if (item is Weapon)
                 item.Name = "weapon";
 
             if (item is Armor)
                 item.Name = "armor";
-
+                */
         }
 
         private static void CalcStatModifications(int level)
