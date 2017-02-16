@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
-using GameStuff.ItemGen;
 using GameStuff.ItemGen.Database;
 using GameStuff.Utility.Enums;
 
@@ -16,7 +15,7 @@ namespace GameStuff.ItemGen
            
         }
 
-        private static void Main()
+        private void Main()
         {
             List<GameItem> items = new List<GameItem>();
 

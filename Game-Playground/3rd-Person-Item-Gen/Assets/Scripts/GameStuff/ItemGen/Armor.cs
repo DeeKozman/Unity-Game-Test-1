@@ -9,31 +9,32 @@ namespace GameStuff.ItemGen
 {
     public class Armor : GameItem
     {
-
-        private static int Level;
-        private static ArmorGroups _armorGroup = GetArmorType();
-        private static ArmorQualityTypes _armorQualityType = GetArmorQuality();
-        private static string _statsModType = getStatsModifierTypes();
-        private static int _statsModAmount = StatsModAmount;
-        public static int DamageReductionAmount;
-        //protected static Random random = new Random();
+        private ArmorGroups _armorGroup;
+        private ArmorQualityTypes _armorQualityType;
+        private string _statsModType;
+        public int DamageReductionAmount;
+        //protected Random random = new Random();
 
         public Armor()
         {
-
+            ItemLevel = random.Next(1, 11);
+            CalcStatModifications(ItemLevel);
+            _armorGroup = GetArmorType();
+            _armorQualityType = GetArmorQuality();
+            _statsModType = getStatsModifierTypes();
             ItemGroup = _armorGroup.ToString();
-            Level = ItemLevel;
+            ItemLevel = ItemLevel;
             ItemQuality = _armorQualityType.ToString();
             Name = GetItemName(Name, ItemQuality, HasMods, _statsModType);
-            DamageReductionAmount = random.Next(1, 3) * Level;
-            PriceBuy = ((Level * DamageReductionAmount)+(Level * _statsModAmount))*100;
+            DamageReductionAmount = random.Next(1, 3) * ItemLevel;
+            PriceBuy = ((ItemLevel * DamageReductionAmount)+(ItemLevel * StatsModAmount))*100;
             PriceSell = (PriceBuy * random.Next(2, 6))/10;
             Debug.Log("Armor! Name: " +Name+ " / PriceBuy: " + PriceBuy + " / PriceSell: " + PriceSell);
 
 
         }
 
-        private static string GetItemName(string name, string quality, bool stats, string statType)
+        private string GetItemName(string name, string quality, bool stats, string statType)
         {
             name = "";
            
@@ -69,24 +70,24 @@ namespace GameStuff.ItemGen
             
         }
 
-        private static ArmorGroups GetArmorType()
+        private ArmorGroups GetArmorType()
         {
             return RandomEnumValue<ArmorGroups>();
         }
 
-        private static ArmorQualityTypes GetArmorQuality()
+        private ArmorQualityTypes GetArmorQuality()
         {
-            _armorQualityType = (ArmorQualityTypes)Level;
-            return _armorQualityType;
+           
+            return (ArmorQualityTypes)ItemLevel;
         }
-        private static string getStatsModifierTypes()
+        private string getStatsModifierTypes()
         {
-            _statsModType = StatsModType.ToString();
-            return _statsModType;
+           
+            return StatsModType.ToString();
         }
 
 
-        private static List<string> armorPrefixes = new List<string>
+        private List<string> armorPrefixes = new List<string>
             {
                 "Blessed",
                 "Ephemeral",
@@ -139,7 +140,7 @@ namespace GameStuff.ItemGen
                 ""
             };
 
-        private static List<string> headList = new List<string>
+        private List<string> headList = new List<string>
             {
                 "Cap",
                 "Helm",
@@ -148,7 +149,7 @@ namespace GameStuff.ItemGen
                 "Bucket"
             };
 
-        private static List<string> chestList = new List<string>
+        private List<string> chestList = new List<string>
             {
                 "Studded Leather Armor",
                 "Leather Armor",
@@ -167,7 +168,7 @@ namespace GameStuff.ItemGen
                 "Chain Shirt"
             };
 
-        private static List<string> feetList = new List<string>
+        private List<string> feetList = new List<string>
             {
                 "Gaitors",
                 "Greives",

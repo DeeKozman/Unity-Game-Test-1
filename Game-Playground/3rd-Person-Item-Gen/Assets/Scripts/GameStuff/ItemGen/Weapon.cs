@@ -8,11 +8,11 @@ namespace GameStuff.ItemGen
 {
     public class Weapon : GameItem
     {
-        private static int Level;
-        private static WeaponGroups _weaponGroup = GetWeaponType();
-        private static WeaponQualityTypes _weaponQualityType = GetWeaponQuality();
-        private static string _statsModType = getStatsModifierTypes();
-        private static int _statsModAmount = StatsModAmount;
+        
+        private  WeaponGroups _weaponGroup;
+        private  WeaponQualityTypes _weaponQualityType;
+        private  string _statsModType;
+        
         // Specific weapon stats.
         public float AttackSpeed;
         public float ChanceToHit;
@@ -21,22 +21,26 @@ namespace GameStuff.ItemGen
         //protected static Random random = new Random();
         public Weapon()
         {
+            ItemLevel = random.Next(1, 11);
+            CalcStatModifications(ItemLevel);
+            _weaponGroup = GetWeaponType();
+            _weaponQualityType = GetWeaponQuality();
+            _statsModType = getStatsModifierTypes();
             ItemGroup = _weaponGroup.ToString();
-            Level = ItemLevel;
             ItemQuality = _weaponQualityType.ToString();
             Name = GetItemName(Name, ItemQuality, HasMods, _statsModType);
             AttackSpeed = (float)random.Next(5, 26) / 10;
-            ChanceToHit = (0.9f + (float)Level) * .05f;
-            DamageOnHit = random.Next(5, 11)*Level;
+            ChanceToHit = (0.9f + (float)ItemLevel) * .05f;
+            DamageOnHit = random.Next(5, 11)*ItemLevel;
             // DPS = Math.Ceiling((((minDamageOnHit+MaxDamageOnHit)/2)*(AttackSpeed + ChanceToHit)));
             DamagePerSecond = (int)Math.Ceiling((((1 + DamageOnHit) / 2) * (AttackSpeed + ChanceToHit)));
-            PriceBuy = ((Level * DamagePerSecond) + (Level * _statsModAmount)) * 100;
+            PriceBuy = ((ItemLevel * DamagePerSecond) + (ItemLevel *StatsModAmount)) * 100;
             PriceSell = (PriceBuy * random.Next(2, 6)) / 10;
             Debug.Log("Weapon! Name: " + Name+ " / PriceBuy: " + PriceBuy + " / PriceSell: " + PriceSell + " / Damage: " + DamageOnHit);
         }
 
 
-        private static string GetItemName(string name, string quality, bool stats, string statType)
+        private  string GetItemName(string name, string quality, bool stats, string statType)
         {
             name = "";
             var addend = "";
@@ -75,26 +79,25 @@ namespace GameStuff.ItemGen
         }
 
 
-        private static WeaponGroups GetWeaponType()
+        private WeaponGroups GetWeaponType()
         {
             return RandomEnumValue<WeaponGroups>();
         }
 
-        private static WeaponQualityTypes GetWeaponQuality()
+        private  WeaponQualityTypes GetWeaponQuality()
         {
-            _weaponQualityType = (WeaponQualityTypes) Level;
-            return _weaponQualityType;
+            return (WeaponQualityTypes) ItemLevel;
         }
 
-        private static string getStatsModifierTypes()
+        private string getStatsModifierTypes()
         {
-            _statsModType = StatsModType.ToString();
-            return _statsModType;
+            
+            return StatsModType.ToString(); 
         } 
 
         public bool CalcChanceToHit()
         {
-            var hit =(0.9f + (float)Level) * .05f;
+            var hit =(0.9f + (float)ItemLevel) * .05f;
             var noHit = (float)random.Next(9, 15) / 10;
             if (noHit < hit)
             {
@@ -106,7 +109,7 @@ namespace GameStuff.ItemGen
             }
         }
 
-        private static List<string> weaponPrefixes = new List<string>
+        private List<string> weaponPrefixes = new List<string>
             {
                 "Savage",
                 "Cold Iron",
@@ -153,7 +156,7 @@ namespace GameStuff.ItemGen
                 ""
             };
 
-        private static List<string> magicSuffixes = new List<string>
+        private List<string> magicSuffixes = new List<string>
             {
 
                 "Unholiness",
@@ -189,7 +192,7 @@ namespace GameStuff.ItemGen
                 ""
             };
 
-        private static List<string> meleeList = new List<string>
+        private List<string> meleeList = new List<string>
             {
                 "Dagger",
                 "Knife",
@@ -223,7 +226,7 @@ namespace GameStuff.ItemGen
                 "Greathammer"
             };
 
-        private static List<string> rangedList = new List<string>
+        private List<string> rangedList = new List<string>
             {
                 "Blow Gun",
                 "Throwing Knife",
@@ -234,7 +237,7 @@ namespace GameStuff.ItemGen
                 "Sling"
             };
 
-        private static List<string> magicList = new List<string>
+        private List<string> magicList = new List<string>
             {
                 "Ring",
                 "Wand",
