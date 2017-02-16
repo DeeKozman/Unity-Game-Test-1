@@ -5,15 +5,18 @@
 //  Eventhough I want to not use a lot of inheritance, this feels like a good way to start to try and 
 //  determine what design pattern I will try to follow. */
 //---------------------------------------------------------------------------------------------------
-
+/// <summary>
+/// All Enums in one place.
+/// </summary>
 namespace GameStuff.Utility.Enums
 {
+    //Main Genre of Items.
     public enum Items
     {
         Weapon = 1,
         Armor
     }
-
+    //Sub-Types of The items.
     public enum ItemTypes
     {
         Melee = 1,
@@ -23,7 +26,7 @@ namespace GameStuff.Utility.Enums
         Chest,
         Feet
     }
-
+    //Breaking the SubGroups into groups specifically used by items.
     public enum WeaponGroups
     {
         Melee = 1,
@@ -37,7 +40,7 @@ namespace GameStuff.Utility.Enums
         Chest,
         Feet
     }
-
+    // Quality types used by names and based on levels.
     public enum WeaponQualityTypes
     {
         Poor = 1,
@@ -67,7 +70,7 @@ namespace GameStuff.Utility.Enums
         Über,
         Legendary
     }
-
+    //modifier types.
     public enum StatsModifierTypes
     {
         Strength,

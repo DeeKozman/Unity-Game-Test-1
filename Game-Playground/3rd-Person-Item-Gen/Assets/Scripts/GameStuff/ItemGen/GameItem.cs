@@ -5,6 +5,10 @@ using GameStuff.Utility.Enums;
 using UnityEngine;
 using Random = System.Random;
 
+/// <summary>
+/// This is where the GameItemObjects are created and universal functions happen.
+/// </summary>
+/// 
 namespace GameStuff.ItemGen
 {
     public class GameItem : ScriptableObject

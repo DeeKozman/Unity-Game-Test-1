@@ -4,6 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using GameStuff.Utility.Enums;
 using Random = System.Random;
+
+/// <summary>
+/// Class that builds Weapons and inherits from the GameItem.
+/// </summary>
+
 namespace GameStuff.ItemGen
 {
     public class Weapon : GameItem
@@ -45,7 +50,10 @@ namespace GameStuff.ItemGen
             AttackSpeed = (float)random.Next(5, 26) / 10;
             ChanceToHit = (0.9f + (float)ItemLevel) * .05f;
             DamageOnHit = random.Next(5, 11) * ItemLevel;
-            // DPS = Math.Ceiling((((minDamageOnHit+MaxDamageOnHit)/2)*(AttackSpeed + ChanceToHit)));
+            /// <summary>
+            /// DPS = Math.Ceiling((((minDamageOnHit+MaxDamageOnHit)/2)*(AttackSpeed + ChanceToHit)));
+            /// </summary>
+           
             DamagePerSecond = (int)Math.Ceiling((((1 + DamageOnHit) / 2) * (AttackSpeed + ChanceToHit)));
             PriceBuy = ((ItemLevel * DamagePerSecond) + (ItemLevel * StatsModAmount)) * 100;
             PriceSell = (PriceBuy * random.Next(2, 6)) / 10;

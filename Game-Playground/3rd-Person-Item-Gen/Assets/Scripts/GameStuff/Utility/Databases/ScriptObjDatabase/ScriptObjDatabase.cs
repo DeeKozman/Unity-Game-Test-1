@@ -4,6 +4,10 @@ using GameStuff.Utility.Databases;
 using UnityEngine;
 using UnityEditor;
 
+/// <summary>
+/// Database structure for Storing assets that run independently of the Game.
+/// </summary>
+
 namespace GameStuff.Utility.Databases.ScriptObjDatabase
 {
 

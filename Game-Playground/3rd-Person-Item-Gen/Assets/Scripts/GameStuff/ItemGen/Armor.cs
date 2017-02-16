@@ -5,6 +5,10 @@ using UnityEngine;
 using GameStuff.Utility.Enums;
 using Random = System.Random;
 
+/// <summary>
+/// Class that builds Armor Types and inherits from the GameItem.
+/// </summary>
+
 namespace GameStuff.ItemGen
 {
     public class Armor : GameItem
