@@ -7,16 +7,11 @@ using GameStuff.Utility.Enums;
 
 namespace GameStuff.ItemGen
 {
-    public class ItemInit : MonoBehaviour
+    public class ItemInit : ScriptableObject
     {
         private void OnEnable()
         {
             Main();
-            print("script was enabled");
-        }
-
-        private void Start()
-        {
            
         }
 
@@ -31,7 +26,7 @@ namespace GameStuff.ItemGen
             Debug.Log("There Are "+items.Count+" Items.");
             foreach (var item in items)
             {
-                //Debug.Log(ItemName);
+                Debug.Log(item.Name+" / "+item.ItemGroup+" / "+item.ItemQuality);
             }
         }
     }

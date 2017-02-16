@@ -7,11 +7,11 @@ using UnityEngine;
 
 namespace GameStuff.ItemGen.Database
 {
-    public class GenerateItemDatabase : MonoBehaviour
+    public class GenerateItemDatabase : ScriptableObject
     {
-        
+
         // Create Database
-        public void OnAwake()
+        private void OnEnable()
         {
             Console.WriteLine("OnEnable is happening.");
            

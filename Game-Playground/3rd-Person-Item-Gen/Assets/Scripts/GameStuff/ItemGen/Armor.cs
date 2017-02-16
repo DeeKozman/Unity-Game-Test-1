@@ -23,7 +23,7 @@ namespace GameStuff.ItemGen
             ItemGroup = _armorGroup.ToString();
             Level = ItemLevel;
             ItemQuality = _armorQualityType.ToString();
-            ItemName = GetItemName(ItemName, ItemQuality, HasMods, _statsModType);
+            Name = GetItemName(Name, ItemQuality, HasMods, _statsModType);
             DamageReductionAmount = random.Next(1, 3) * Level;
             PriceBuy = ((Level * DamageReductionAmount)+(Level * _statsModAmount))*100;
             PriceSell = (PriceBuy * random.Next(2, 6))/10;

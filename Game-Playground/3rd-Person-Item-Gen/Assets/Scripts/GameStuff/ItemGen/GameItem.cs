@@ -10,7 +10,7 @@ namespace GameStuff.ItemGen
     public class GameItem : ScriptableObject
     {
 
-        public string ItemName;
+        public string Name;
         public int ItemLevel;
         public string ItemGroup;
         public string ItemQuality;
@@ -34,7 +34,7 @@ namespace GameStuff.ItemGen
             GenerateName(newItem);
             newItem.ItemLevel = random.Next(1, 11);
             CalcStatModifications(newItem.ItemLevel);
-            Debug.Log("Name: " + newItem.ItemName+" / Level: " + newItem.ItemLevel + " / StatsModType: " + StatsModType+ " / StatsModAmount: "+StatsModAmount);
+            //Debug.Log("Name: " + newItem.Name+" / Level: " + newItem.ItemLevel + " / StatsModType: " + StatsModType+ " / StatsModAmount: "+StatsModAmount);
             return newItem;
         }
 
@@ -44,7 +44,7 @@ namespace GameStuff.ItemGen
             GenerateName(newItem);
             newItem.ItemLevel = random.Next(1, 11);
             CalcStatModifications(newItem.ItemLevel);
-            Debug.Log("Level: " + newItem.ItemLevel + "/ Name: " + newItem.ItemName);
+            Debug.Log("Level: " + newItem.ItemLevel + "/ Name: " + newItem.Name);
             return newItem;
         }
 
@@ -54,17 +54,17 @@ namespace GameStuff.ItemGen
             GenerateName(newItem);
             newItem.ItemLevel = itemLevel;
             CalcStatModifications(newItem.ItemLevel);
-            Debug.Log("Level: " + newItem.ItemLevel + "/ Name: " + newItem.ItemName);
+            Debug.Log("Level: " + newItem.ItemLevel + "/ Name: " + newItem.Name);
             return newItem;
         }
 
         private static void GenerateName(GameItem item)
         {
             if (item is Weapon)
-                item.ItemName = "weapon";
+                item.Name = "weapon";
 
             if (item is Armor)
-                item.ItemName = "armor";
+                item.Name = "armor";
 
         }
 

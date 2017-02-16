@@ -24,7 +24,7 @@ namespace GameStuff.ItemGen
             ItemGroup = _weaponGroup.ToString();
             Level = ItemLevel;
             ItemQuality = _weaponQualityType.ToString();
-            ItemName = GetItemName(ItemName, ItemQuality, HasMods, _statsModType);
+            Name = GetItemName(Name, ItemQuality, HasMods, _statsModType);
             AttackSpeed = (float)random.Next(5, 26) / 10;
             ChanceToHit = (0.9f + (float)Level) * .05f;
             DamageOnHit = random.Next(5, 11)*Level;
