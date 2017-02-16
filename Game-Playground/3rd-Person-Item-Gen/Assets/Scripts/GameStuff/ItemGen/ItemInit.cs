@@ -5,6 +5,10 @@ using UnityEngine;
 using GameStuff.ItemGen.Database;
 using GameStuff.Utility.Enums;
 
+/// <summary>
+/// Class I am using to initialize the GameItems. This will be replaced with an editor control and also in game scripts.
+/// </summary>
+
 namespace GameStuff.ItemGen
 {
     public class ItemInit : ScriptableObject
