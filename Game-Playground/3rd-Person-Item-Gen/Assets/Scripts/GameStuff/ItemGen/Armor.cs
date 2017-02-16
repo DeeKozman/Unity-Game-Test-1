@@ -7,28 +7,28 @@ using Random = System.Random;
 
 namespace GameStuff.ItemGen
 {
-    public class Armor : ScriptableObject
+    public class Armor : GameItem
     {
 
         private static int Level;
         private static ArmorGroups _armorGroup = GetArmorType();
         private static ArmorQualityTypes _armorQualityType = GetArmorQuality();
         private static string _statsModType = getStatsModifierTypes();
-        private static int _statsModAmount = GameItem.StatsModAmount;
+        private static int _statsModAmount = StatsModAmount;
         public static int DamageReductionAmount;
-        protected static Random random = new Random();
+        //protected static Random random = new Random();
 
         public Armor()
         {
 
-            GameItem.ItemGroup = _armorGroup.ToString();
-            Level = GameItem.ItemLevel;
-            GameItem.ItemQuality = _armorQualityType.ToString();
-            GameItem.Name = GetItemName(GameItem.Name, GameItem.ItemQuality, GameItem.HasMods, _statsModType);
+            ItemGroup = _armorGroup.ToString();
+            Level = ItemLevel;
+            ItemQuality = _armorQualityType.ToString();
+            Name = GetItemName(Name, ItemQuality, HasMods, _statsModType);
             DamageReductionAmount = random.Next(1, 3) * Level;
-            GameItem.PriceBuy = ((Level * DamageReductionAmount)+(Level * _statsModAmount))*100;
-            GameItem.PriceSell = (GameItem.PriceBuy * random.Next(2, 6))/10;
-            Debug.Log("Armor!" + " / PriceBuy: " + GameItem.PriceBuy + " / PriceSell: " + GameItem.PriceSell);
+            PriceBuy = ((Level * DamageReductionAmount)+(Level * _statsModAmount))*100;
+            PriceSell = (PriceBuy * random.Next(2, 6))/10;
+            Debug.Log("Armor! Name: " +Name+ " / PriceBuy: " + PriceBuy + " / PriceSell: " + PriceSell);
 
 
         }
@@ -71,7 +71,7 @@ namespace GameStuff.ItemGen
 
         private static ArmorGroups GetArmorType()
         {
-            return GameItem.RandomEnumValue<ArmorGroups>();
+            return RandomEnumValue<ArmorGroups>();
         }
 
         private static ArmorQualityTypes GetArmorQuality()
@@ -81,7 +81,7 @@ namespace GameStuff.ItemGen
         }
         private static string getStatsModifierTypes()
         {
-            _statsModType = GameItem.StatsModType.ToString();
+            _statsModType = StatsModType.ToString();
             return _statsModType;
         }
 

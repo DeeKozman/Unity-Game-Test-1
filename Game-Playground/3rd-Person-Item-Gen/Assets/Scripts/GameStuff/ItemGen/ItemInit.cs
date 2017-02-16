@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using GameStuff.ItemGen;
 using GameStuff.ItemGen.Database;
 using GameStuff.Utility.Enums;
 

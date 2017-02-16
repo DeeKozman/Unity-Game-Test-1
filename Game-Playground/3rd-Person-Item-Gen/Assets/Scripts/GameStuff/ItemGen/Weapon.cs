@@ -6,33 +6,33 @@ using GameStuff.Utility.Enums;
 using Random = System.Random;
 namespace GameStuff.ItemGen
 {
-    public class Weapon : ScriptableObject
+    public class Weapon : GameItem
     {
         private static int Level;
         private static WeaponGroups _weaponGroup = GetWeaponType();
         private static WeaponQualityTypes _weaponQualityType = GetWeaponQuality();
         private static string _statsModType = getStatsModifierTypes();
-        private static int _statsModAmount = GameItem.StatsModAmount;
+        private static int _statsModAmount = StatsModAmount;
         // Specific weapon stats.
         public float AttackSpeed;
         public float ChanceToHit;
         public int DamageOnHit;
         public int DamagePerSecond { get; set; }
-        protected static Random random = new Random();
+        //protected static Random random = new Random();
         public Weapon()
         {
-            GameItem.ItemGroup = _weaponGroup.ToString();
-            Level = GameItem.ItemLevel;
-            GameItem.ItemQuality = _weaponQualityType.ToString();
-            GameItem.Name = GetItemName(GameItem.Name, GameItem.ItemQuality, GameItem.HasMods, _statsModType);
+            ItemGroup = _weaponGroup.ToString();
+            Level = ItemLevel;
+            ItemQuality = _weaponQualityType.ToString();
+            Name = GetItemName(Name, ItemQuality, HasMods, _statsModType);
             AttackSpeed = (float)random.Next(5, 26) / 10;
             ChanceToHit = (0.9f + (float)Level) * .05f;
             DamageOnHit = random.Next(5, 11)*Level;
             // DPS = Math.Ceiling((((minDamageOnHit+MaxDamageOnHit)/2)*(AttackSpeed + ChanceToHit)));
             DamagePerSecond = (int)Math.Ceiling((((1 + DamageOnHit) / 2) * (AttackSpeed + ChanceToHit)));
-            GameItem.PriceBuy = ((Level * DamagePerSecond) + (Level * _statsModAmount)) * 100;
-            GameItem.PriceSell = (GameItem.PriceBuy * random.Next(2, 6)) / 10;
-            Debug.Log("Weapon!" + " / PriceBuy: " + GameItem.PriceBuy + " / PriceSell: " + GameItem.PriceSell);
+            PriceBuy = ((Level * DamagePerSecond) + (Level * _statsModAmount)) * 100;
+            PriceSell = (PriceBuy * random.Next(2, 6)) / 10;
+            Debug.Log("Weapon! Name: " + Name+ " / PriceBuy: " + PriceBuy + " / PriceSell: " + PriceSell + " / Damage: " + DamageOnHit);
         }
 
 
@@ -77,7 +77,7 @@ namespace GameStuff.ItemGen
 
         private static WeaponGroups GetWeaponType()
         {
-            return GameItem.RandomEnumValue<WeaponGroups>();
+            return RandomEnumValue<WeaponGroups>();
         }
 
         private static WeaponQualityTypes GetWeaponQuality()
@@ -88,7 +88,7 @@ namespace GameStuff.ItemGen
 
         private static string getStatsModifierTypes()
         {
-            _statsModType = GameItem.StatsModType.ToString();
+            _statsModType = StatsModType.ToString();
             return _statsModType;
         } 
 
