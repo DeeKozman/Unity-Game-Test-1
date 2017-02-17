@@ -11,12 +11,13 @@ using Random = System.Random;
 
 namespace GameStuff.ItemGen
 {
+    [Serializable]
     public class Armor : GameItem
     {
         private ArmorGroups _armorGroup;
         private ArmorQualityTypes _armorQualityType;
         private string _statsModType;
-        public int DamageReductionAmount;
+        private string _baseName;
         //protected Random random = new Random();
 
         public Armor()
@@ -25,32 +26,45 @@ namespace GameStuff.ItemGen
             
             _statsModType = getStatsModifierTypes();
             ItemGroup = _armorGroup.ToString();
-         
+            ItemKind = "Armor";
         }
 
         protected override void GenerateQuality()
         {
             _armorQualityType = GetArmorQuality();
             ItemQuality = _armorQualityType.ToString();
-
-            
+            if (HasMods)
+            {
+                ItemClass = ItemQuality + " " + ItemGroup + " Armor of " + _statsModType;
+            }
+            else
+            {
+                ItemClass = ItemQuality + " " + ItemGroup + " Armor";
+            }
         }
 
         protected override void GenerateItemName()
         {
-            Name = GetItemName(Name, ItemQuality, HasMods, _statsModType);
+            Name = GetItemName(Name, HasMods, _statsModType);
         }
 
         protected override void GenerateTheDetails()
         {
-            
+
+        
             DamageReductionAmount = random.Next(1, 3) * ItemLevel;
             PriceBuy = ((ItemLevel * DamageReductionAmount) + (ItemLevel * StatsModAmount)) * 100;
             PriceSell = (PriceBuy * random.Next(2, 6)) / 10;
-            Debug.Log("Armor! Name:"+Name+" / Level:"+ItemLevel+" / ItemGroup: "+ItemGroup+" / ItemQuality:"+ItemQuality+" / PriceBuy:"+PriceBuy+" / PriceSell:"+PriceSell+" / Damage Reduction: "+ DamageReductionAmount+" / StatsModAmount: "+ StatsModAmount);
+            AttackSpeed = 0;
+            ChanceToHit = 0;
+            DamageOnHit = 0;
+            DamagePerSecond = 0;
+            ItemSlug = "armor-" + (ItemGroup.ToLower()) + "-" + ItemLevel.ToString() + "-" + (_baseName.ToLower());
+            Debug.Log("Armor! Name:"+Name+ "/ Class:" + ItemClass + "/ Level:" +ItemLevel+"/ ItemGroup: "+ItemGroup+"/ ItemQuality:"+ItemQuality+"/ PriceBuy:"+PriceBuy+"/ PriceSell:"+PriceSell+"/ Damage Reduction: "+ DamageReductionAmount+"/ StatsModAmount: "+ StatsModAmount + "/ slug: " + ItemSlug +
+                       ".png");
         }
 
-        private string GetItemName(string name, string quality, bool stats, string statType)
+        private string GetItemName(string name, bool stats, string statType)
         {
             name = "";
            
@@ -63,18 +77,22 @@ namespace GameStuff.ItemGen
             {
                 addend = " of " + statType;
             }
+            var prefix = armorPrefixes[random.Next(0, armorPrefixes.Count)];
             switch (_armorGroup)
             {
                 case ArmorGroups.Head:
-                    name = quality + " " + armorPrefixes[random.Next(0, armorPrefixes.Count)] + " " + headList[random.Next(0, (headList.Count))] + addend;
+                    _baseName = headList[random.Next(0, (headList.Count))];
+                    name = prefix + " " + _baseName + addend;
                     break;
 
                 case ArmorGroups.Chest:
-                    name = quality + " " + armorPrefixes[random.Next(0, armorPrefixes.Count)] + " " + chestList[random.Next(0, (chestList.Count))] + addend;
+                    _baseName = chestList[random.Next(0, (chestList.Count))];
+                   name = prefix + " " + _baseName + addend;
                     break;
 
                 case ArmorGroups.Feet:
-                    name = quality + " " + armorPrefixes[random.Next(0, armorPrefixes.Count)] + " " + feetList[random.Next(0, (feetList.Count))] + addend;
+                    _baseName = feetList[random.Next(0, (feetList.Count))];
+                   name = prefix + " " + _baseName + addend;
                     break;
 
                 default:
@@ -171,17 +189,17 @@ namespace GameStuff.ItemGen
                 "Studded Leather Armor",
                 "Leather Armor",
                 "Cloak",
-                "Collar",
-                "Plate",
+                "Collar Armor",
+                "Plate Armor",
                 "Padded Armor",
                 "Half Plate",
                 "Ring Mail",
                 "Scale Mail",
                 "Breastplate",
-                "Skinsuit",
-                "Dragon Mail",
-                "Chain Mail",
-                "Shell",
+                "Armor Skinsuit",
+                "Dragon Mail Armor",
+                "Chain Mail Armor",
+                "Shell Armor",
                 "Chain Shirt"
             };
 

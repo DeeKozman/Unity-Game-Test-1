@@ -11,26 +11,65 @@ using GameStuff.Utility.Enums;
 
 namespace GameStuff.ItemGen
 {
+    [System.Serializable]
     public class ItemInit : ScriptableObject
     {
+        
+        private GameItem Item;
+        [SerializeField] public String Name;
+        [SerializeField] public String Level;
+        [SerializeField] public String Type;
+        [SerializeField] public String Modifier;
+        [SerializeField] public String DamageOnHit;
+        [SerializeField] public String AttackSpeed;
+        [SerializeField] public String ChanceOfHit;
+        [SerializeField] public String DPS;
+        [SerializeField] public String DamageReduction;
+        [SerializeField] public String Price;
+        [SerializeField] public String ImageName;
+        
         private void OnEnable()
         {
-            Main();
-           
+            //Main();
+            makeGameItem();
+            Name = Item.Name;
+            Level = "Level "+Item.ItemLevel.ToString();
+            Type = Item.ItemClass;
+            Modifier = "Type: "+Item.StatsModType + " / Amount: " + Item.StatsModAmount;
+            Price = "Buy: $"+Item.PriceBuy.ToString() +" / Sell: $"+Item.PriceSell.ToString();
+            addDetails();
+        }
+
+        private GameItem makeGameItem()
+        {
+            Debug.Log("Making an Item.");
+            Item = GameItem.Generate();
+            return Item;
+        }
+
+        private void addDetails()
+        {
+            
+            DamageOnHit = Item.DamageOnHit.ToString();
+            AttackSpeed = Item.AttackSpeed.ToString();
+            ChanceOfHit = Item.ChanceToHit.ToString();
+            DPS = Item.DamagePerSecond.ToString();
+            DamageReduction = Item.DamageReductionAmount.ToString();
+            ImageName = Item.ItemSlug+".png";
         }
 
         private void Main()
         {
-            List<GameItem> items = new List<GameItem>();
-
+            List<GameItem> generatedItemsList = new List<GameItem>();
             for (var i = 0; i < 100; i++)
             {
-                items.Add(GameItem.Generate());
+               
+                generatedItemsList.Add(GameItem.Generate());
             }
-            Debug.Log("There Are "+items.Count+" Items.");
-            foreach (var item in items)
+            Debug.Log("There Are "+ generatedItemsList.Count+" Items.");
+            foreach (var item in generatedItemsList)
             {
-                //Debug.Log("name: "+GameItem.Name+" / Group: "+ GameItem.ItemGroup + " /  Quality:"+ GameItem.ItemQuality+" / price:"+ GameItem.PriceBuy + " / sell:" +GameItem.PriceSell);
+                Debug.Log("name: "+item.Name+" / Group: "+ item.ItemGroup + " /  Quality:"+ item.ItemQuality+" / price:"+ item.PriceBuy + " / sell:" +item.PriceSell);
             }
         }
     }

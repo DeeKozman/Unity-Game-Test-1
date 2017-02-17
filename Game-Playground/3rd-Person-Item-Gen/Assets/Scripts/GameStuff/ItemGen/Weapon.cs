@@ -11,37 +11,42 @@ using Random = System.Random;
 
 namespace GameStuff.ItemGen
 {
+    [Serializable]
     public class Weapon : GameItem
     {
         
         private  WeaponGroups _weaponGroup;
         private  WeaponQualityTypes _weaponQualityType;
         private  string _statsModType;
-        
-        // Specific weapon stats.
-        public float AttackSpeed;
-        public float ChanceToHit;
-        public int DamageOnHit;
-        public int DamagePerSecond { get; set; }
+        private string _baseName;
+
         //protected static Random random = new Random();
         public Weapon()
         {
             _weaponGroup = GetWeaponType();
             _statsModType = getStatsModifierTypes();
             ItemGroup = _weaponGroup.ToString();
-           
+            ItemKind = "Weapon";
+
         }
 
         protected override void GenerateQuality()
         {
             _weaponQualityType = GetWeaponQuality();
             ItemQuality = _weaponQualityType.ToString();
-            
+            if (HasMods)
+            {
+                ItemClass = ItemQuality + " " + ItemGroup + " Weapon of "+ _statsModType;
+            }
+            else
+            {
+                ItemClass = ItemQuality + " " + ItemGroup + " Weapon";
+            }
         }
 
         protected override void GenerateItemName()
         {
-            Name = GetItemName(Name, ItemQuality, HasMods, _statsModType);
+            Name = GetItemName(Name, HasMods, _statsModType);
         }
 
         protected override void GenerateTheDetails()
@@ -57,38 +62,51 @@ namespace GameStuff.ItemGen
             DamagePerSecond = (int)Math.Ceiling((((1 + DamageOnHit) / 2) * (AttackSpeed + ChanceToHit)));
             PriceBuy = ((ItemLevel * DamagePerSecond) + (ItemLevel * StatsModAmount)) * 100;
             PriceSell = (PriceBuy * random.Next(2, 6)) / 10;
-            Debug.Log("Weapon! Name:" + Name + " / Level:" + ItemLevel + " / ItemGroup: " + ItemGroup + " / ItemQuality:" + ItemQuality + " / PriceBuy:" + PriceBuy + " / PriceSell:" + PriceSell+" / DamageOnHit: " + DamageOnHit +" / AttackSpeed: "+AttackSpeed+" / ChanceToHit: "+ChanceToHit+" / DPS: "+DamagePerSecond+" / StatsModAmount: "+ StatsModAmount);
+            DamageReductionAmount = 0;
+            Debug.Log("_baseName = " + _baseName);
+            ItemSlug = "weapon-"+(ItemGroup.ToLower() )+ "-" + ItemLevel.ToString() + "-" + (_baseName.ToLower());
+           // Debug.Log("Weapon! Name:" + Name +"/ Class:"+ItemClass+ "/ Level:" + ItemLevel + "/ ItemGroup: " + ItemGroup + "/ ItemQuality:" + ItemQuality + "/ PriceBuy:" + PriceBuy + "/ PriceSell:" + PriceSell+"/ DamageOnHit: " + DamageOnHit +"/ AttackSpeed: "+AttackSpeed+"/ ChanceToHit: "+ChanceToHit+"/ DPS: "+DamagePerSecond+"/ StatsModAmount: "+ StatsModAmount+"/ slug: "+ItemSlug +".png");
         }
 
 
-        private  string GetItemName(string name, string quality, bool stats, string statType)
+        private  string GetItemName(string name, bool stats, string statType)
         {
             name = "";
             var addend = "";
+            var prefix = weaponPrefixes[random.Next(0, weaponPrefixes.Count)];
             if (!stats)
             {
                 statType = "";
             }
             else
             {
-                addend = " of " + statType;
+                if (_weaponGroup != WeaponGroups.Magic) {
+                    addend = " of " + statType;
+                    
+                }
+                else
+                 {
+                     addend = ", Enhancing " + statType;
+                     
+                 }
             }
+           
 
             switch (_weaponGroup)
             {
                 case WeaponGroups.Melee:
-                    name = quality+" "+weaponPrefixes[random.Next(0, weaponPrefixes.Count)] + " " +
-                           meleeList[random.Next(0, meleeList.Count)] + addend;
+                    _baseName = meleeList[random.Next(0, meleeList.Count)];
+                    name = prefix + " " +_baseName + addend;
                     break;
 
                 case WeaponGroups.Ranged:
-                    name = quality + " "+weaponPrefixes[random.Next(0, weaponPrefixes.Count)] + " " +
-                           rangedList[random.Next(0, rangedList.Count)] + addend;
+                    _baseName = rangedList[random.Next(0, rangedList.Count)];
+                    name =  prefix + " " + _baseName + addend;
                     break;
 
                 case WeaponGroups.Magic:
-                    name = quality + " "+magicList[random.Next(0, magicList.Count)] + " of " +
-                           magicSuffixes[random.Next(0, magicSuffixes.Count)] + addend;
+                    _baseName = magicList[random.Next(0, magicList.Count)];
+                    name = _baseName + " of " + magicSuffixes[random.Next(0, magicSuffixes.Count)] + addend;
                     break;
 
                 default:
@@ -210,6 +228,7 @@ namespace GameStuff.ItemGen
                 "Conjurer's Select Batch",
                 "Dragon's Fire",
                 "Hellfire",
+                "Corpse Excrement",
                 ""
             };
 
@@ -255,6 +274,7 @@ namespace GameStuff.ItemGen
                 "Crossbow",
                 "Bow",
                 "Longbow",
+                "Throwing Turd",
                 "Sling"
             };
 
@@ -262,6 +282,11 @@ namespace GameStuff.ItemGen
             {
                 "Ring",
                 "Wand",
+                "Spell Book",
+                "Pouch",
+                "Staff",
+                "Stone",
+                "Crystal",
                 "Orb",
                 "Talisman",
                 "Amulet",

@@ -11,6 +11,7 @@ using Random = System.Random;
 /// 
 namespace GameStuff.ItemGen
 {
+    [Serializable]
     public class GameItem : ScriptableObject
     {
 
@@ -18,11 +19,20 @@ namespace GameStuff.ItemGen
         public int ItemLevel;
         public string ItemGroup;
         public string ItemQuality;
+        public string ItemClass;
+        public string ItemKind;
         public StatsModifierTypes StatsModType;
         public bool HasMods;
         public int StatsModAmount;
         public int PriceBuy;
         public int PriceSell;
+        // Specific weapon stats.
+        public float AttackSpeed;
+        public float ChanceToHit;
+        public int DamageOnHit;
+        public int DamagePerSecond;
+        public int DamageReductionAmount;
+        public string ItemSlug;
 
         protected static Random random = new Random();
 
