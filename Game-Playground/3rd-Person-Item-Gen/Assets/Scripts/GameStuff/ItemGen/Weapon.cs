@@ -17,17 +17,20 @@ namespace GameStuff.ItemGen
         
         private  WeaponGroups _weaponGroup;
         private  WeaponQualityTypes _weaponQualityType;
-        private  string _statsModType;
+        private  string _statsModType = "";
         private string _baseName;
 
         //protected static Random random = new Random();
         public Weapon()
         {
             _weaponGroup = GetWeaponType();
+            StatsModType = GetStatType();
             _statsModType = getStatsModifierTypes();
+            Debug.Log("FromWeapon mod is:" + StatsModType.ToString());
+            Debug.Log("FromWeapon _statsModType mod is:" + _statsModType.ToString());
             ItemGroup = _weaponGroup.ToString();
             ItemKind = "Weapon";
-
+           
         }
 
         protected override void GenerateQuality()
@@ -36,11 +39,11 @@ namespace GameStuff.ItemGen
             ItemQuality = _weaponQualityType.ToString();
             if (HasMods)
             {
-                ItemClass = ItemQuality + " " + ItemGroup + " Weapon of "+ _statsModType;
+                ItemClass = ItemGroup + " Weapon with " + _statsModType + " Modifier";
             }
             else
             {
-                ItemClass = ItemQuality + " " + ItemGroup + " Weapon";
+                ItemClass = ItemGroup + " Weapon";
             }
         }
 
@@ -63,7 +66,7 @@ namespace GameStuff.ItemGen
             PriceBuy = ((ItemLevel * DamagePerSecond) + (ItemLevel * StatsModAmount)) * 100;
             PriceSell = (PriceBuy * random.Next(2, 6)) / 10;
             DamageReductionAmount = 0;
-            Debug.Log("_baseName = " + _baseName);
+            //Debug.Log("_baseName = " + _baseName);
             ItemSlug = "weapon-"+(ItemGroup.ToLower() )+ "-" + ItemLevel.ToString() + "-" + (_baseName.ToLower());
            // Debug.Log("Weapon! Name:" + Name +"/ Class:"+ItemClass+ "/ Level:" + ItemLevel + "/ ItemGroup: " + ItemGroup + "/ ItemQuality:" + ItemQuality + "/ PriceBuy:" + PriceBuy + "/ PriceSell:" + PriceSell+"/ DamageOnHit: " + DamageOnHit +"/ AttackSpeed: "+AttackSpeed+"/ ChanceToHit: "+ChanceToHit+"/ DPS: "+DamagePerSecond+"/ StatsModAmount: "+ StatsModAmount+"/ slug: "+ItemSlug +".png");
         }
@@ -130,7 +133,6 @@ namespace GameStuff.ItemGen
 
         private string getStatsModifierTypes()
         {
-            
             return StatsModType.ToString(); 
         } 
 

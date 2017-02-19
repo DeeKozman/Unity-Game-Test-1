@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using System.IO;
 using GameStuff.ItemGen.Database;
+using GameStuff.Utility;
 using GameStuff.Utility.Enums;
 
 /// <summary>
@@ -11,11 +13,12 @@ using GameStuff.Utility.Enums;
 
 namespace GameStuff.ItemGen
 {
+
     [System.Serializable]
     public class ItemInit : ScriptableObject
     {
         
-        private GameItem Item;
+        public GameItem Item;
         [SerializeField] public String Name;
         [SerializeField] public String Level;
         [SerializeField] public String Type;
@@ -27,18 +30,27 @@ namespace GameStuff.ItemGen
         [SerializeField] public String DamageReduction;
         [SerializeField] public String Price;
         [SerializeField] public String ImageName;
-        
+        private string filePath;
+        private string jsonString;
+
         private void OnEnable()
         {
             //Main();
             makeGameItem();
-            Name = Item.Name;
+            string day = Item.Name;
+            /*Name = Item.Name;
             Level = "Level "+Item.ItemLevel.ToString();
             Type = Item.ItemClass;
             Modifier = "Type: "+Item.StatsModType + " / Amount: " + Item.StatsModAmount;
             Price = "Buy: $"+Item.PriceBuy.ToString() +" / Sell: $"+Item.PriceSell.ToString();
-            addDetails();
+            addDetails();*/
+            filePath = Path.Combine(Application.streamingAssetsPath, "Item.json");
+            Debug.Log(filePath);
+            //Debug.Log("item name is:"+Item.Name);
+            jsonString = JsonUtility.ToJson(day);
+            File.WriteAllText(filePath, jsonString);
         }
+        
 
         private GameItem makeGameItem()
         {

@@ -11,14 +11,12 @@ namespace GameStuff.UI
         public Button buttonComponent;
         public Image IconImage;
         public Text NameLabel;
-        public Text GroupLabel;
+        public Text DescriptionLabel;
         public Text LevelLabel;
         public Text DamageLabel;
-        public Text AttackLabel;
-        public Text ChanceLabel;
-        public Text DPSLabel;
-        public Text BuyLabel;
-        public Text SellLabel;
+       
+        public Text PriceLabel;
+       
 
         private Item item;
         private ShopScrollList scrollList;
@@ -37,21 +35,18 @@ namespace GameStuff.UI
             NameLabel.text = item.NameTxt;
             IconImage.sprite = item.icon;
 
-            GroupLabel.text = item.GroupTxt.ToString();
+            DescriptionLabel.text = item.GroupTxt.ToString();
             LevelLabel.text = item.LevelTxt.ToString();
-            DamageLabel.text = item.DamageTxt.ToString();
-            AttackLabel.text = item.AttackTxt.ToString();
-            ChanceLabel.text = item.ChanceTxt.ToString();
-            DPSLabel.text = item.DPSTxt.ToString();
-            BuyLabel.text = item.BuyTxt.ToString();
-            SellLabel.text = item.SellTxt.ToString();
+            DamageLabel.text = item.DamageTxt.ToString()+ item.AttackTxt.ToString() + item.ChanceTxt.ToString() + item.DPSTxt.ToString();
+            PriceLabel.text = item.BuyTxt.ToString()+item.SellTxt.ToString();
+            
             scrollList = currentScrollList;
 
         }
 
         public void HandleClick()
         {
-            scrollList.TryTransferItemToOtherShop(item);
+            //scrollList.TryTransferItemToOtherShop(item);
         }
     }
 

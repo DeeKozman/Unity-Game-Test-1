@@ -14,7 +14,7 @@ namespace GameStuff.ItemGen
     [Serializable]
     public class GameItem : ScriptableObject
     {
-
+        public int Id;
         public string Name;
         public int ItemLevel;
         public string ItemGroup;
@@ -58,7 +58,6 @@ namespace GameStuff.ItemGen
             newItem.GenerateQuality();
             newItem.GenerateItemName();
             newItem.GenerateTheDetails();
-           
             return newItem;
         }
 
@@ -86,7 +85,7 @@ namespace GameStuff.ItemGen
 
         public void CalcStatModifications(int level)
         {
-            StatsModType = GetStatType();
+           
             level = random.Next(1, 11);
             
             if (random.Next(0, 100) < level * 8)
@@ -107,8 +106,9 @@ namespace GameStuff.ItemGen
             return (T)v.GetValue(random.Next(v.Length));
         }
 
-        private StatsModifierTypes GetStatType()
+        public StatsModifierTypes GetStatType()
         {
+            
             return RandomEnumValue<StatsModifierTypes>();
         }
 

@@ -24,7 +24,7 @@ namespace GameStuff.Utility.Enums
         Magic,
         Head,
         Chest,
-        Feet
+        Foot
     }
     //Breaking the SubGroups into groups specifically used by items.
     public enum WeaponGroups
@@ -38,7 +38,7 @@ namespace GameStuff.Utility.Enums
     {
         Head = 1,
         Chest,
-        Feet
+        Foot
     }
     // Quality types used by names and based on levels.
     public enum WeaponQualityTypes
@@ -73,7 +73,7 @@ namespace GameStuff.Utility.Enums
     //modifier types.
     public enum StatsModifierTypes
     {
-        Strength,
+        Strength ,
         Agility,
         Intellect
     }

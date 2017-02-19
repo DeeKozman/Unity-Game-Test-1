@@ -16,17 +16,18 @@ namespace GameStuff.ItemGen
     {
         private ArmorGroups _armorGroup;
         private ArmorQualityTypes _armorQualityType;
-        private string _statsModType;
+        private string _statsModType = "";
         private string _baseName;
         //protected Random random = new Random();
 
         public Armor()
         {
             _armorGroup = GetArmorType();
-            
+            StatsModType = GetStatType();
             _statsModType = getStatsModifierTypes();
             ItemGroup = _armorGroup.ToString();
             ItemKind = "Armor";
+            
         }
 
         protected override void GenerateQuality()
@@ -35,11 +36,11 @@ namespace GameStuff.ItemGen
             ItemQuality = _armorQualityType.ToString();
             if (HasMods)
             {
-                ItemClass = ItemQuality + " " + ItemGroup + " Armor of " + _statsModType;
+                ItemClass = ItemGroup + " Armor with " + _statsModType+" Modifier";
             }
             else
             {
-                ItemClass = ItemQuality + " " + ItemGroup + " Armor";
+                ItemClass = ItemGroup + " Armor";
             }
         }
 
@@ -60,8 +61,7 @@ namespace GameStuff.ItemGen
             DamageOnHit = 0;
             DamagePerSecond = 0;
             ItemSlug = "armor-" + (ItemGroup.ToLower()) + "-" + ItemLevel.ToString() + "-" + (_baseName.ToLower());
-            Debug.Log("Armor! Name:"+Name+ "/ Class:" + ItemClass + "/ Level:" +ItemLevel+"/ ItemGroup: "+ItemGroup+"/ ItemQuality:"+ItemQuality+"/ PriceBuy:"+PriceBuy+"/ PriceSell:"+PriceSell+"/ Damage Reduction: "+ DamageReductionAmount+"/ StatsModAmount: "+ StatsModAmount + "/ slug: " + ItemSlug +
-                       ".png");
+            //Debug.Log("Armor! Name:"+Name+ "/ Class:" + ItemClass + "/ Level:" +ItemLevel+"/ ItemGroup: "+ItemGroup+"/ ItemQuality:"+ItemQuality+"/ PriceBuy:"+PriceBuy+"/ PriceSell:"+PriceSell+"/ Damage Reduction: "+ DamageReductionAmount+"/ StatsModAmount: "+ StatsModAmount + "/ slug: " + ItemSlug +".png");
         }
 
         private string GetItemName(string name, bool stats, string statType)
@@ -90,7 +90,7 @@ namespace GameStuff.ItemGen
                    name = prefix + " " + _baseName + addend;
                     break;
 
-                case ArmorGroups.Feet:
+                case ArmorGroups.Foot:
                     _baseName = feetList[random.Next(0, (feetList.Count))];
                    name = prefix + " " + _baseName + addend;
                     break;
@@ -117,7 +117,6 @@ namespace GameStuff.ItemGen
 
         private string getStatsModifierTypes()
         {
-           
             return StatsModType.ToString();
         }
 
