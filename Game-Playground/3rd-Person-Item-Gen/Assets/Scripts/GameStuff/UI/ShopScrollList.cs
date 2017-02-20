@@ -2,39 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using GameStuff.ItemGen;
+using GameStuff.ItemGen.Inventory;
 
 namespace GameStuff.UI
 {
-    [System.Serializable]
-    public class Item
-    {
-        //public string itemName;
-        public Sprite icon;
-        //public float price = 1;
-        //public Button ItemButton;
-        public string NameTxt;
-        public string GroupTxt;
-        public float LevelTxt;
-        public float DamageTxt;
-        public float AttackTxt;
-        public float ChanceTxt;
-        public float DPSTxt;
-        public float BuyTxt =1;
-        public float SellTxt;
-    }
+    
 
     public class ShopScrollList : MonoBehaviour
     {
 
         //public generatedItemsList list
-        public List<Item> itemList;
+        public List<GameInventoryItem> itemList;
         public Transform contentPanel;
         //public ShopScrollList otherShop;
-        public Text myGoldDisplay;
+        
         public SimpleObjectPool buttonObjectPool;
 
-        public float gold = 200f;
+       
 
 
         // Use this for initialization
@@ -45,7 +29,7 @@ namespace GameStuff.UI
 
         public void RefreshDisplay()
         {
-            myGoldDisplay.text = "Gold: " + gold.ToString();
+           
             RemoveButtons();
             AddButtons();
         }
@@ -63,16 +47,16 @@ namespace GameStuff.UI
         {
             for (int i = 0; i < itemList.Count; i++)
             {
-                Item item = itemList[i];
+                GameInventoryItem item = itemList[i];
                 GameObject newButton = buttonObjectPool.GetObject();
                 newButton.transform.SetParent(contentPanel);
 
-                SampleButton sampleButton = newButton.GetComponent<SampleButton>();
-               sampleButton.Setup(item, this);
+                GameInventoryItem itemButton = newButton.GetComponent<GameInventoryItem>();
+               //itemButton.StartItem( item, this);
             }
         }
 
-        public void TryTransferItemToOtherShop(Item item)
+        public void TryTransferItemToOtherShop(GameInventoryItem item)
         {
             /*if (otherShop.gold >= item.BuyTxt)
             {
@@ -90,12 +74,12 @@ namespace GameStuff.UI
             Debug.Log("attempted");*/
         }
 
-        void AddItem(Item itemToAdd, ShopScrollList shopList)
+        void AddItem(GameInventoryItem itemToAdd, ShopScrollList shopList)
         {
             shopList.itemList.Add(itemToAdd);
         }
 
-        private void RemoveItem(Item itemToRemove, ShopScrollList shopList)
+        private void RemoveItem(GameInventoryItem itemToRemove, ShopScrollList shopList)
         {
             for (int i = shopList.itemList.Count - 1; i >= 0; i--)
             {

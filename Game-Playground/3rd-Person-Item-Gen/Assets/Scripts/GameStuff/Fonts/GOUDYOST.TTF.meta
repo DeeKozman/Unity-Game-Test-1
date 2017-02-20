@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 9eb0285c5ffb6104a87b6c50c447ebe7
+timeCreated: 1487604280
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: GoudyOlSt BT
+  fontNames:
+  - GoudyOlSt BT
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 903e3bb6609ec7045891d7c494b4b5c7, type: 3}
+  - {fileID: 12800000, guid: 38c19a59baf74ca4c8a382d72cb1b0b3, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

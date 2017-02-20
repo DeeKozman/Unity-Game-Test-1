@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using System.IO;
-using GameStuff.ItemGen.Database;
+
 using GameStuff.Utility;
 using GameStuff.Utility.Enums;
 
@@ -36,7 +36,7 @@ namespace GameStuff.ItemGen
         private void OnEnable()
         {
             //Main();
-            makeGameItem();
+           // makeGameItem();
             string day = Item.Name;
             /*Name = Item.Name;
             Level = "Level "+Item.ItemLevel.ToString();
@@ -45,7 +45,7 @@ namespace GameStuff.ItemGen
             Price = "Buy: $"+Item.PriceBuy.ToString() +" / Sell: $"+Item.PriceSell.ToString();
             addDetails();*/
             filePath = Path.Combine(Application.streamingAssetsPath, "Item.json");
-            Debug.Log(filePath);
+           // Debug.Log(filePath);
             //Debug.Log("item name is:"+Item.Name);
             jsonString = JsonUtility.ToJson(day);
             File.WriteAllText(filePath, jsonString);
