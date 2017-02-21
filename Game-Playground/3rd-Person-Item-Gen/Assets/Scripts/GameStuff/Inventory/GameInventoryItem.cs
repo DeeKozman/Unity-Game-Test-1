@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,11 +8,13 @@ using GameStuff.UI;
 
 namespace GameStuff.ItemGen.Inventory
 {
+    [Serializable]
     public class GameInventoryItem : MonoBehaviour
     {
 
         public GameInventoryItemTemplate Item;
         public Button buttonComponent;
+
         public Text NameText,
             DescriptionText,
             LevelText,
@@ -20,10 +23,13 @@ namespace GameStuff.ItemGen.Inventory
             AttackText,
             ChanceText,
             DpsText,
-            PriceText,
-            iconText;
+            PriceText;
+        public Sprite[] ItemIconSprites;
 
-        public Image icon;
+        private string imageName;
+        private int _arrayIdx;
+        private Sprite _itemIconSprite;
+        private Image _iconImage;
         private GameInventoryItem item;
         private ShopScrollList scrollList;
         // Use this for initialization
@@ -32,7 +38,7 @@ namespace GameStuff.ItemGen.Inventory
 
             buttonComponent.onClick.AddListener(HandleClick);
             if (Item != null)
-               SetupItem(Item );
+               SetupItem(Item);
             
         }
 
@@ -48,18 +54,59 @@ namespace GameStuff.ItemGen.Inventory
             AttackText.text = Item.AttackSpeed;
             ChanceText.text = Item.ChanceOfHit;
             DpsText.text = Item.DPS;
-           
             PriceText.text = Item.Price;
-            //iconText.text = Item.ImageName;
-            icon.sprite = new Sprite();
-            //
+
+            imageName = Item.ImageName;
+            ChangeImage();
+           
         }
 
-        // Update is called once per frame
-        void Update()
+        public void ChangeImage()
         {
 
+            _arrayIdx = 0;
+            switch (imageName)
+            {
+                case "Melee":
+                    _arrayIdx = 0;
+                    break;
+
+                case "Ranged":
+                    _arrayIdx = 1;
+                    break;
+
+                case "Magic":
+                    _arrayIdx = 2;
+                    break;
+
+                case "Head":
+                    _arrayIdx = 3;
+                    break;
+
+                case "Chest":
+                    _arrayIdx = 4;
+                    break;
+
+                case "Foot":
+                    _arrayIdx = 5;
+                    break;
+
+            }
+            _itemIconSprite = ItemIconSprites[_arrayIdx];
+
+            if (this.transform.GetChild(1).transform.name == "Icon")
+                {
+                    Debug.Log("_itemIconSprite"+ _itemIconSprite+ " /_arrayIdx"+ _arrayIdx);
+                _iconImage = this.transform.GetChild(1).transform.GetComponent<Image>();
+                    _iconImage.sprite = _itemIconSprite;
+                }
+                else
+                {
+                    Debug.Log("Didn't Find It");
+                }
+            
         }
+
         public void HandleClick()
         {
             Debug.Log("Clicked");

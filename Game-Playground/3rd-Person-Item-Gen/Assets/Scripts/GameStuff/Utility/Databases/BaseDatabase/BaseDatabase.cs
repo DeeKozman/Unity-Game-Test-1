@@ -6,7 +6,7 @@ using UnityEngine;
 
 
 namespace GameStuff.Utility.Databases.BaseDatabase { 
-
+    /*
     public class BaseDatabase<T> : AbstractDatabase<T> where T : BaseDatabaseAsset
     {
         protected override void OnAddObject(T t)
@@ -22,5 +22,5 @@ namespace GameStuff.Utility.Databases.BaseDatabase {
             //EditorUtility.SetDirty(this);
     #endif
         }
-    }
+    }*/
 }

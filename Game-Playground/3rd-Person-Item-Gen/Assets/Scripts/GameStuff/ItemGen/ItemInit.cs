@@ -14,9 +14,9 @@ using GameStuff.Utility.Enums;
 namespace GameStuff.ItemGen
 {
 
-    [System.Serializable]
+    //[System.Serializable]
     public class ItemInit : ScriptableObject
-    {
+    {/*
         
         public GameItem Item;
         [SerializeField] public String Name;
@@ -44,46 +44,46 @@ namespace GameStuff.ItemGen
             Modifier = "Type: "+Item.StatsModType + " / Amount: " + Item.StatsModAmount;
             Price = "Buy: $"+Item.PriceBuy.ToString() +" / Sell: $"+Item.PriceSell.ToString();
             addDetails();*/
-            filePath = Path.Combine(Application.streamingAssetsPath, "Item.json");
-           // Debug.Log(filePath);
-            //Debug.Log("item name is:"+Item.Name);
-            jsonString = JsonUtility.ToJson(day);
-            File.WriteAllText(filePath, jsonString);
-        }
-        
+     /*   filePath = Path.Combine(Application.streamingAssetsPath, "Item.json");
+       // Debug.Log(filePath);
+        //Debug.Log("item name is:"+Item.Name);
+        jsonString = JsonUtility.ToJson(day);
+        File.WriteAllText(filePath, jsonString);
+    }
 
-        private GameItem makeGameItem()
-        {
-            Debug.Log("Making an Item.");
-            Item = GameItem.Generate();
-            return Item;
-        }
 
-        private void addDetails()
-        {
-            
-            DamageOnHit = Item.DamageOnHit.ToString();
-            AttackSpeed = Item.AttackSpeed.ToString();
-            ChanceOfHit = Item.ChanceToHit.ToString();
-            DPS = Item.DamagePerSecond.ToString();
-            DamageReduction = Item.DamageReductionAmount.ToString();
-            ImageName = Item.ItemSlug+".png";
-        }
+    private GameItem makeGameItem()
+    {
+        Debug.Log("Making an Item.");
+        Item = GameItem.Generate();
+        return Item;
+    }
 
-        private void Main()
+    private void addDetails()
+    {
+
+        DamageOnHit = Item.DamageOnHit.ToString();
+        AttackSpeed = Item.AttackSpeed.ToString();
+        ChanceOfHit = Item.ChanceToHit.ToString();
+        DPS = Item.DamagePerSecond.ToString();
+        DamageReduction = Item.DamageReductionAmount.ToString();
+        ImageName = Item.ItemSlug+".png";
+    }
+
+    private void Main()
+    {
+        List<GameItem> generatedItemsList = new List<GameItem>();
+        for (var i = 0; i < 100; i++)
         {
-            List<GameItem> generatedItemsList = new List<GameItem>();
-            for (var i = 0; i < 100; i++)
-            {
-               
-                generatedItemsList.Add(GameItem.Generate());
-            }
-            Debug.Log("There Are "+ generatedItemsList.Count+" Items.");
-            foreach (var item in generatedItemsList)
-            {
-                Debug.Log("name: "+item.Name+" / Group: "+ item.ItemGroup + " /  Quality:"+ item.ItemQuality+" / price:"+ item.PriceBuy + " / sell:" +item.PriceSell);
-            }
+
+            generatedItemsList.Add(GameItem.Generate());
         }
+        Debug.Log("There Are "+ generatedItemsList.Count+" Items.");
+        foreach (var item in generatedItemsList)
+        {
+            Debug.Log("name: "+item.Name+" / Group: "+ item.ItemGroup + " /  Quality:"+ item.ItemQuality+" / price:"+ item.PriceBuy + " / sell:" +item.PriceSell);
+        }
+    }*/
     }
 }
 

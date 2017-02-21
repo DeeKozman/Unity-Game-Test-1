@@ -19,6 +19,7 @@ public class GameInventoryItemTemplate : ScriptableObject
     [SerializeField] public string DPS;
     [SerializeField] public string Price;
     [SerializeField] public string ImageName;
+    //[SerializeField] public string Group;
 
     private void OnEnable()
     {
@@ -49,6 +50,7 @@ public class GameInventoryItemTemplate : ScriptableObject
         {
             Modifier = "";
         }
+
         if (Item.DamageOnHit != 0)
         {
             Damage = "Damage On Hit: " + Item.DamageOnHit.ToString();
@@ -66,6 +68,7 @@ public class GameInventoryItemTemplate : ScriptableObject
 
         
         
-        ImageName = "Resources/Sprites/"+Item.ItemSlug+".png";
+        ImageName = Item.ItemGroup;
+        //Debug.Log("ImageName is: "+ImageName);
     }
 }

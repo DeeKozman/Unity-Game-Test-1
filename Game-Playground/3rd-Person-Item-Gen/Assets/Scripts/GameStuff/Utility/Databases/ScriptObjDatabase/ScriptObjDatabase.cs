@@ -2,7 +2,7 @@
 using System;
 using GameStuff.Utility.Databases;
 using UnityEngine;
-using UnityEditor;
+//using UnityEditor;
 
 /// <summary>
 /// Database structure for Storing assets that run independently of the Game.
