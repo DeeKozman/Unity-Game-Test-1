@@ -1,28 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ButtonManager : MonoBehaviour {
-
+[Serializable]
+public class ButtonManager : MonoBehaviour
+{
     public static ButtonManager ButtonMgr;
-    
 
-    void Awake()
+
+    private void Awake()
     {
-        if (ButtonMgr == null)
+        if (ButtonMgr != null)
+        {
+            Destroy(gameObject);
+        }
+        else if (ButtonMgr == this)
         {
             DontDestroyOnLoad(gameObject);
             ButtonMgr = this;
         }
-        else if (ButtonMgr != this)
-        {
-            Destroy(gameObject);
-        }
-
     }
 
-    public void NewGameBtn(string newGameLevel)
+    public void NewGameBtn(int newGameLevel)
     {
         SceneManager.LoadScene(newGameLevel);
     }
