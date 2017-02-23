@@ -1,0 +1,382 @@
+Initialize engine version: 5.5.1p4 (f10174ef3e2d)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 650 (ID=0xfc6)
+    Vendor:   NVIDIA
+    VRAM:     2017 MB
+    Driver:   21.21.13.7653
+Begin MonoManager ReloadAssembly
+Platform assembly: R:\Projects\Unity\try2\Game-Playground\TestBuild2\DevBuild02_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading R:\Projects\Unity\try2\Game-Playground\TestBuild2\DevBuild02_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: R:\Projects\Unity\try2\Game-Playground\TestBuild2\DevBuild02_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading R:\Projects\Unity\try2\Game-Playground\TestBuild2\DevBuild02_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: R:\Projects\Unity\try2\Game-Playground\TestBuild2\DevBuild02_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading R:\Projects\Unity\try2\Game-Playground\TestBuild2\DevBuild02_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: R:\Projects\Unity\try2\Game-Playground\TestBuild2\DevBuild02_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading R:\Projects\Unity\try2\Game-Playground\TestBuild2\DevBuild02_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: R:\Projects\Unity\try2\Game-Playground\TestBuild2\DevBuild02_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading R:\Projects\Unity\try2\Game-Playground\TestBuild2\DevBuild02_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: R:\Projects\Unity\try2\Game-Playground\TestBuild2\DevBuild02_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
+Loading R:\Projects\Unity\try2\Game-Playground\TestBuild2\DevBuild02_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
+Platform assembly: R:\Projects\Unity\try2\Game-Playground\TestBuild2\DevBuild02_Data\Managed\LitJson.dll (this message is harmless)
+Loading R:\Projects\Unity\try2\Game-Playground\TestBuild2\DevBuild02_Data\Managed\LitJson.dll into Unity Child Domain
+- Completed reload, in  0.030 seconds
+Platform assembly: R:\Projects\Unity\try2\Game-Playground\TestBuild2\DevBuild02_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: R:\Projects\Unity\try2\Game-Playground\TestBuild2\DevBuild02_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 3840x1081 at -1920,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 0.971870 ms
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: abd0 -> priority: 1 
+  Thread -> id: aaa8 -> priority: 1 
+The referenced script on this Behaviour (Game Object 'Slot') is missing!
+ 
+(Filename:  Line: 1754)
+
+The referenced script on this Behaviour (Game Object 'Item') is missing!
+ 
+(Filename:  Line: 1754)
+
+The referenced script on this Behaviour (Game Object 'Inventory') is missing!
+ 
+(Filename:  Line: 1754)
+
+The referenced script on this Behaviour (Game Object 'Inventory') is missing!
+ 
+(Filename:  Line: 1754)
+
+The referenced script on this Behaviour (Game Object 'Inventory') is missing!
+ 
+(Filename:  Line: 1754)
+
+The referenced script on this Behaviour (Game Object 'Main Camera') is missing!
+ 
+(Filename:  Line: 1754)
+
+The referenced script on this Behaviour (Game Object 'PlayerController') is missing!
+ 
+(Filename:  Line: 1754)
+
+The referenced script on this Behaviour (Game Object 'PlayerController') is missing!
+ 
+(Filename:  Line: 1754)
+
+Unloading 7 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 5.996925 ms
+
+Unloading 36 unused Assets to reduce memory usage. Loaded Objects now: 1039.
+Total: 0.631204 ms (FindLiveObjects: 0.062896 ms CreateObjectMapping: 0.019156 ms MarkObjects: 0.304906 ms  DeleteObjects: 0.243606 ms)
+
+Player distance =50.40601
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.427474 ms
+
+Unloading 111 unused Assets to reduce memory usage. Loaded Objects now: 467.
+Total: 1.481751 ms (FindLiveObjects: 0.027776 ms CreateObjectMapping: 0.016602 ms MarkObjects: 0.168576 ms  DeleteObjects: 1.268475 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+Making an Item.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Making an Item.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Making an Item.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+FromWeapon mod is:Strength
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+FromWeapon _statsModType mod is:Strength
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Making an Item.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+FromWeapon mod is:Agility
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+FromWeapon _statsModType mod is:Agility
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Making an Item.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Making an Item.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+FromWeapon mod is:Intellect
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+FromWeapon _statsModType mod is:Intellect
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Making an Item.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+FromWeapon mod is:Intellect
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+FromWeapon _statsModType mod is:Intellect
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Making an Item.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+FromWeapon mod is:Strength
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+FromWeapon _statsModType mod is:Strength
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Making an Item.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Making an Item.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+FromWeapon mod is:Strength
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+FromWeapon _statsModType mod is:Strength
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Making an Item.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Making an Item.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Making an Item.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Making an Item.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+FromWeapon mod is:Strength
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+FromWeapon _statsModType mod is:Strength
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Making an Item.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Making an Item.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+FromWeapon mod is:Intellect
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+FromWeapon _statsModType mod is:Intellect
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Making an Item.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+FromWeapon mod is:Agility
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+FromWeapon _statsModType mod is:Agility
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Making an Item.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Making an Item.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+FromWeapon mod is:Agility
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+FromWeapon _statsModType mod is:Agility
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Making an Item.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Making an Item.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Making an Item.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Making an Item.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+FromWeapon mod is:Agility
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+FromWeapon _statsModType mod is:Agility
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Making an Item.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+FromWeapon mod is:Agility
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+FromWeapon _statsModType mod is:Agility
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+UnloadTime: 0.474441 ms
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 1793.
+Total: 1.408637 ms (FindLiveObjects: 0.067686 ms CreateObjectMapping: 0.029373 ms MarkObjects: 1.279331 ms  DeleteObjects: 0.031927 ms)
+
+_itemIconSpriteHead (UnityEngine.Sprite) /_arrayIdx3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+_itemIconSpriteMagic (UnityEngine.Sprite) /_arrayIdx2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+_itemIconSpriteFoot (UnityEngine.Sprite) /_arrayIdx5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+_itemIconSpriteRanged (UnityEngine.Sprite) /_arrayIdx1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+_itemIconSpriteFoot (UnityEngine.Sprite) /_arrayIdx5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+_itemIconSpriteHead (UnityEngine.Sprite) /_arrayIdx3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+_itemIconSpriteHead (UnityEngine.Sprite) /_arrayIdx3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+_itemIconSpriteFoot (UnityEngine.Sprite) /_arrayIdx5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+_itemIconSpriteHead (UnityEngine.Sprite) /_arrayIdx3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+_itemIconSpriteMagic (UnityEngine.Sprite) /_arrayIdx2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+_itemIconSpriteMagic (UnityEngine.Sprite) /_arrayIdx2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+_itemIconSpriteFoot (UnityEngine.Sprite) /_arrayIdx5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+_itemIconSpriteMelee (UnityEngine.Sprite) /_arrayIdx0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+_itemIconSpriteMagic (UnityEngine.Sprite) /_arrayIdx2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+_itemIconSpriteRanged (UnityEngine.Sprite) /_arrayIdx1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+_itemIconSpriteMelee (UnityEngine.Sprite) /_arrayIdx0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+_itemIconSpriteMelee (UnityEngine.Sprite) /_arrayIdx0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+_itemIconSpriteMelee (UnityEngine.Sprite) /_arrayIdx0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+_itemIconSpriteMelee (UnityEngine.Sprite) /_arrayIdx0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+_itemIconSpriteMagic (UnityEngine.Sprite) /_arrayIdx2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+_itemIconSpriteFoot (UnityEngine.Sprite) /_arrayIdx5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+_itemIconSpriteChest (UnityEngine.Sprite) /_arrayIdx4
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+_itemIconSpriteHead (UnityEngine.Sprite) /_arrayIdx3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+_itemIconSpriteFoot (UnityEngine.Sprite) /_arrayIdx5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 6.116014 ms
+
+Unloading 82 unused Assets to reduce memory usage. Loaded Objects now: 467.
+Total: 0.354074 ms (FindLiveObjects: 0.079818 ms CreateObjectMapping: 0.018517 ms MarkObjects: 0.202100 ms  DeleteObjects: 0.053318 ms)
+

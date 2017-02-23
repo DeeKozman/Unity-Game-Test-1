@@ -4,6 +4,7 @@
 /// Helps the Enemy turn to face player and attack when player gets close. 
 /// </summary>
 //TODO: Rework this code and other enemy classes.
+
 namespace GameStuff.Enemy
 {
     public class EnemyAI : MonoBehaviour
