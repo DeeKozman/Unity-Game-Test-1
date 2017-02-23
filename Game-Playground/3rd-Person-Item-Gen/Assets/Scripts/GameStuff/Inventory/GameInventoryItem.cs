@@ -1,19 +1,26 @@
-﻿using System.Collections;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
-using GameStuff.ItemGen;
-using GameStuff.UI;
+
+/// <summary>
+/// Class That takes the GameInventoryItem Scriptable Object and injects it into the prefab.
+/// </summary>
 
 namespace GameStuff.ItemGen.Inventory
 {
     [Serializable]
     public class GameInventoryItem : MonoBehaviour
     {
+        private int _arrayIdx;
+        private Image _iconImage;
+        private Sprite _itemIconSprite;
+        public Button buttonComponent;
+
+        private string imageName;
+        private GameInventoryItem item;
 
         public GameInventoryItemTemplate Item;
-        public Button buttonComponent;
+        public Sprite[] ItemIconSprites;
 
         public Text NameText,
             DescriptionText,
@@ -24,28 +31,19 @@ namespace GameStuff.ItemGen.Inventory
             ChanceText,
             DpsText,
             PriceText;
-        public Sprite[] ItemIconSprites;
 
-        private string imageName;
-        private int _arrayIdx;
-        private Sprite _itemIconSprite;
-        private Image _iconImage;
-        private GameInventoryItem item;
-        private ShopScrollList scrollList;
         // Use this for initialization
         public void Start()
         {
-
             buttonComponent.onClick.AddListener(HandleClick);
             if (Item != null)
-               SetupItem(Item);
-            
+                SetupItem(Item);
         }
 
         public void SetupItem(GameInventoryItemTemplate item)
         {
-            this.Item = item;
-           
+            Item = item;
+
             NameText.text = Item.Name;
             DescriptionText.text = Item.Description;
             LevelText.text = Item.Level;
@@ -58,12 +56,10 @@ namespace GameStuff.ItemGen.Inventory
 
             imageName = Item.ImageName;
             ChangeImage();
-           
         }
 
         public void ChangeImage()
         {
-
             _arrayIdx = 0;
             switch (imageName)
             {
@@ -90,21 +86,19 @@ namespace GameStuff.ItemGen.Inventory
                 case "Foot":
                     _arrayIdx = 5;
                     break;
-
             }
             _itemIconSprite = ItemIconSprites[_arrayIdx];
 
-            if (this.transform.GetChild(1).transform.name == "Icon")
-                {
-                    Debug.Log("_itemIconSprite"+ _itemIconSprite+ " /_arrayIdx"+ _arrayIdx);
-                _iconImage = this.transform.GetChild(1).transform.GetComponent<Image>();
-                    _iconImage.sprite = _itemIconSprite;
-                }
-                else
-                {
-                    Debug.Log("Didn't Find It");
-                }
-            
+            if (transform.GetChild(1).transform.name == "Icon")
+            {
+                Debug.Log("_itemIconSprite" + _itemIconSprite + " /_arrayIdx" + _arrayIdx);
+                _iconImage = transform.GetChild(1).transform.GetComponent<Image>();
+                _iconImage.sprite = _itemIconSprite;
+            }
+            else
+            {
+                Debug.Log("Didn't Find It");
+            }
         }
 
         public void HandleClick()
@@ -113,7 +107,4 @@ namespace GameStuff.ItemGen.Inventory
             //scrollList.TryTransferItemToOtherShop(item);
         }
     }
-
 }
-
-

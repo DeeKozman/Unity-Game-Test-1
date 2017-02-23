@@ -1,33 +1,40 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
-public class Menu : MonoBehaviour {
+/// <summary>
+///     TODO: Add this menu in for testing different resolutions. Not currently being used.
+/// </summary>
+public class Menu : MonoBehaviour
+{
+    [SerializeField] private GameObject buttonPrefab;
 
-	Resolution[] resolutions;
+    [SerializeField] private Transform menuPanel;
 
-	[SerializeField] Transform menuPanel;
-	[SerializeField] GameObject buttonPrefab;
+    private Resolution[] resolutions;
 
-	// Use this for initialization
-	void Start () {
-		resolutions = Screen.resolutions;
-		for (int i = 0; i < resolutions.Length; i++){
-			GameObject button = (GameObject)Instantiate (buttonPrefab);
-			button.GetComponentInChildren<Text>().text = ResToString(resolutions[i]);
-			int index = i;
-			button.GetComponent<Button>().onClick.AddListener(
-				() => {SetResolution (index);}
-				);
-			button.transform.parent = menuPanel;
-		}
-	}
+    // Use this for initialization
+    private void Start()
+    {
+        resolutions = Screen.resolutions;
+        for (var i = 0; i < resolutions.Length; i++)
+        {
+            var button = Instantiate(buttonPrefab);
+            button.GetComponentInChildren<Text>().text = ResToString(resolutions[i]);
+            var index = i;
+            button.GetComponent<Button>().onClick.AddListener(
+                () => { SetResolution(index); }
+            );
+            button.transform.parent = menuPanel;
+        }
+    }
 
-	void SetResolution (int index){
-		Screen.SetResolution (resolutions[index].width,resolutions[index].height,false);
-	}
+    private void SetResolution(int index)
+    {
+        Screen.SetResolution(resolutions[index].width, resolutions[index].height, false);
+    }
 
-	string ResToString (Resolution res){
-		return res.width + " x " + res.height;
-	}
+    private string ResToString(Resolution res)
+    {
+        return res.width + " x " + res.height;
+    }
 }

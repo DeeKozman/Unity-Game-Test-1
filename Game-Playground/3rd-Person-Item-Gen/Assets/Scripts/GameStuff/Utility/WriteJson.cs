@@ -1,14 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System;
-using UnityEngine;
-using LitJson;
-using System.IO;
-using GameStuff.ItemGen;
+﻿using UnityEngine;
+
+/// <summary>
+/// Piece of Shit JSON writer Test class that made me want to murder someone.
+/// </summary>
+/// TODO: Figure out why this doesn't work. FIX IT....or kill it. Would be a much better way of importing and exporting items from game.
 
 namespace GameStuff.Utility
 {
-    
     public class WriteJson : MonoBehaviour
     {
         //private GameItem Item;
@@ -17,19 +15,15 @@ namespace GameStuff.Utility
         //private string ted;
 
 
-        void Awake()
+        private void Awake()
         {
-           /*Item = GameItem.Generate();
-            ted =  Item.Name.ToString();
-            Debug.Log("starting WriteJson: " + ted);
-            jsonData = JsonMapper.ToJson(ted, writer1);
-            Debug.Log("jsonData: " + jsonData);
-
-           File.WriteAllText(Application.dataPath + "/StreamingAssets/Items.json", jsonData.ToString());*/
+            /*Item = GameItem.Generate();
+             ted =  Item.Name.ToString();
+             Debug.Log("starting WriteJson: " + ted);
+             jsonData = JsonMapper.ToJson(ted, writer1);
+             Debug.Log("jsonData: " + jsonData);
+ 
+            File.WriteAllText(Application.dataPath + "/StreamingAssets/Items.json", jsonData.ToString());*/
         }
-
-       
     }
-
 }
-

@@ -1,7 +1,11 @@
 ﻿/*using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;*/
-namespace ItemGen.UI
+/// <summary>
+/// TODO:Add Player Experience in at later date.
+/// </summary>
+
+namespace GameStuff.UI
 {
     public class UIExperienceBar //: MonoBehaviour
     {
@@ -31,5 +35,5 @@ namespace ItemGen.UI
                 entity.EntityLevel.ExpCurrent,
                 entity.EntityLevel.ExpRequired,
                 entity.EntityLevel.Level);*/
-        }
     }
+}

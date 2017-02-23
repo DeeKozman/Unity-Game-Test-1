@@ -1,16 +1,17 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 // A very simple object pooling class
+// Class found on a link in the Unity forum.
 
 namespace GameStuff.UI
 {
     public class SimpleObjectPool : MonoBehaviour
     {
+        // collection of currently inactive instances of the prefab
+        private readonly Stack<GameObject> inactiveInstances = new Stack<GameObject>();
         // the prefab that this object pool returns instances of
         public GameObject prefab;
-        // collection of currently inactive instances of the prefab
-        private Stack<GameObject> inactiveInstances = new Stack<GameObject>();
 
         // Returns an instance of the prefab
         public GameObject GetObject()
@@ -26,10 +27,10 @@ namespace GameStuff.UI
             // otherwise, create a new instance
             else
             {
-                spawnedGameObject = (GameObject)GameObject.Instantiate(prefab);
+                spawnedGameObject = Instantiate(prefab);
 
                 // add the PooledObject component to the prefab so we know it came from this pool
-                PooledObject pooledObject = spawnedGameObject.AddComponent<PooledObject>();
+                var pooledObject = spawnedGameObject.AddComponent<PooledObject>();
                 pooledObject.pool = this;
             }
 
@@ -44,7 +45,7 @@ namespace GameStuff.UI
         // Return an instance of the prefab to the pool
         public void ReturnObject(GameObject toReturn)
         {
-            PooledObject pooledObject = toReturn.GetComponent<PooledObject>();
+            var pooledObject = toReturn.GetComponent<PooledObject>();
 
             // if the instance came from this pool, return it to the pool
             if (pooledObject != null && pooledObject.pool == this)

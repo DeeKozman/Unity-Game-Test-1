@@ -1,46 +1,44 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.EventSystems;
 
-public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler {
-	public static GameObject itemBeingDragged;
-	Vector3 startPosition;
-	Transform startParent;
+/// <summary>
+///     TODO: Make Inventory Items DraggableANDdroppable
+/// </summary>
+public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+{
+    public static GameObject itemBeingDragged;
+    private Transform startParent;
+    private Vector3 startPosition;
 
-	#region IBeginDragHandler implementation
+    #region IBeginDragHandler implementation
 
-	public void OnBeginDrag (PointerEventData eventData)
-	{
-		itemBeingDragged = gameObject;
-		startPosition = transform.position;
-		startParent = transform.parent;
-		GetComponent<CanvasGroup>().blocksRaycasts = false;
-	}
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        itemBeingDragged = gameObject;
+        startPosition = transform.position;
+        startParent = transform.parent;
+        GetComponent<CanvasGroup>().blocksRaycasts = false;
+    }
 
-	#endregion
+    #endregion
 
-	#region IDragHandler implementation
+    #region IDragHandler implementation
 
-	public void OnDrag (PointerEventData eventData)
-	{
-		transform.position = eventData.position;
-	}
+    public void OnDrag(PointerEventData eventData)
+    {
+        transform.position = eventData.position;
+    }
 
-	#endregion
+    #endregion
 
-	#region IEndDragHandler implementation
+    #region IEndDragHandler implementation
 
-	public void OnEndDrag (PointerEventData eventData)
-	{
-		itemBeingDragged = null;
-		GetComponent<CanvasGroup>().blocksRaycasts = true;
-		if(transform.parent == startParent){
-			transform.position = startPosition;
-		}
-	}
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        itemBeingDragged = null;
+        GetComponent<CanvasGroup>().blocksRaycasts = true;
+        if (transform.parent == startParent) transform.position = startPosition;
+    }
 
-	#endregion
-
-
-
+    #endregion
 }
