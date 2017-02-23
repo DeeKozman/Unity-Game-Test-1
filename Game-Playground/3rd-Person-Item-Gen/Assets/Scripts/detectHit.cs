@@ -11,7 +11,7 @@ public class detectHit : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag != oppenent) return;
-        Debug.Log("Hit!!!");
+        //Debug.Log("Hit!!!");
         healthbar.value -= 10;
 
         if (healthbar.value <= 0)

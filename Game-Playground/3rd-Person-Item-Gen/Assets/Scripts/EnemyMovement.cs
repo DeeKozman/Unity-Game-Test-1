@@ -12,7 +12,7 @@ public class EnemyMovement : MonoBehaviour
         // Set up the references.
         _player = GameObject.FindGameObjectWithTag("Player").transform;
 
-        _nav = GetComponent<NavMeshAgent>();
+        // _nav = GetComponent<NavMeshAgent>();
     }
 
 
@@ -20,12 +20,12 @@ public class EnemyMovement : MonoBehaviour
     {
         // Set the destination of the nav mesh agent to the _player.
         // _anim.SetBool("OrcIsRunning", true);
-        _nav.SetDestination(_player.position);
+        // _nav.SetDestination(_player.position);
     }
 
-    /* private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
             Debug.Log("Player Hit!!!)");
-    }*/
+    }
 }

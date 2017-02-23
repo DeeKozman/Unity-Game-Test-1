@@ -20,7 +20,7 @@ public class EnemyAI : MonoBehaviour
 
         target = go.transform;
 
-        maxDistance = 5;
+        maxDistance = 11;
     }
 
     // Update is called once per frame
